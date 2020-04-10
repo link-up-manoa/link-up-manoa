@@ -1,0 +1,4 @@
+.landing-background {
+  background: #02784D url('images/landing-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}

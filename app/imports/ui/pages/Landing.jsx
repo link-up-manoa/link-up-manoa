@@ -1,22 +1,35 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid, Icon, Header } from 'semantic-ui-react';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
   render() {
     return (
-        <Grid verticalAlign='middle' textAlign='center' container>
+        <div className={'landing-background'}>
+          <Grid container centered stackable columns={3}>
 
-          <Grid.Column width={4}>
-            <Image size='small' circular src="/images/meteor-logo.png"/>
-          </Grid.Column>
+            <Grid.Column textAlign='center'>
+              <Icon size={'huge'} name={'handshake'} inverted/>
+              <Header inverted as={'h1'} >Meet Like Minded Students</Header>
+              <Header as={'h3'} inverted>This app allows users to find other
+              students who are in similar classes.</Header>
+            </Grid.Column>
 
-          <Grid.Column width={8}>
-            <h1>Welcome to this template</h1>
-            <p>Now get to work and modify this app!</p>
-          </Grid.Column>
+            <Grid.Column textAlign={'center'}>
+              <Icon size={'huge'} name={'users'} inverted/>
+              <Header inverted as={'h1'} >Create Study Groups</Header>
+              <Header as={'h3'} inverted>When you find others who are helpful,
+              you can create study groups and sessions to get together and help each other</Header>
+            </Grid.Column>
 
-        </Grid>
+            <Grid.Column textAlign={'center'}>
+              <Icon inverted size={'huge'} name={'calendar alternate outline'} />
+              <Header inverted as={'h1'} >Schedule Sessions</Header>
+              <Header as={'h3'} inverted>Keep your scheduled study sessions
+              organized in our integrated calendar</Header>
+            </Grid.Column>
+          </Grid>
+        </div>
     );
   }
 }
