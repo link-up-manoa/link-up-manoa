@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, Icon, Header } from 'semantic-ui-react';
+import { Grid, Icon, Header, Menu } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
@@ -7,7 +8,6 @@ class Landing extends React.Component {
     return (
         <div className={'landing-background'}>
           <Grid container centered stackable columns={3}>
-
             <Grid.Column textAlign='center'>
               <Icon size={'huge'} name={'handshake'} inverted/>
               <Header inverted as={'h1'} >Meet Like Minded Students</Header>
