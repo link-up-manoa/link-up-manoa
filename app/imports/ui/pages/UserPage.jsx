@@ -1,11 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 // import _ from 'underscore@1.0.10';
-import { Container, Header, Loader, Card, Image, Button, Icon, Grid } from 'semantic-ui-react';
+import { Container, Header, Loader, Card, Image, Button, Icon, Grid, Menu } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Users } from '../../api/user/User';
 import { Classes } from '../../api/class/Classes';
+import { NavLink } from 'react-router-dom';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserPage extends React.Component {
@@ -39,7 +40,8 @@ class UserPage extends React.Component {
                 <Grid columns='two' divided>
                   <Grid.Row>
                     <Grid.Column>
-                      <Button icon labelPosition='left'>
+                      <Button icon labelPosition='left' as={NavLink} activeClassName="active"
+                              exact to="/addClass" key='addClass'>
                         <Icon name='add' />
                         Add Class
                       </Button>
