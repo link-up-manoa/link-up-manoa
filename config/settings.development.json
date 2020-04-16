@@ -13,5 +13,23 @@
   "defaultUsers": [
     { "firstName": "John", "lastName": "Foo", "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
       "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science","owner": "john@foo.com"}
+
+  "defaultFriends": [
+    { "firstName":  "Taylor", "lastName":  "Gabatino", "major":  "Computer Science",
+      "image":  "http://getdrawings.com/free-icon/business-woman-icon-74.png",
+      "owner": "john@foo.com"
+    },
+    { "firstName":  "Jatin", "lastName":  "Pandya", "major":  "Computer Science",
+      "image":  "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
+      "owner": "john@foo.com"
+    },
+    { "firstName":  "Kameron", "lastName":  "Wong", "major":  "Computer Science",
+      "image":  "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
+      "owner": "john@foo.com"
+    },
+    { "firstName":  "Aubrie", "lastName":  "Usui", "major":  "Computer Science",
+      "image":  "http://getdrawings.com/free-icon/business-woman-icon-74.png",
+      "owner": "john@foo.com"
+    }
   ]
 }
