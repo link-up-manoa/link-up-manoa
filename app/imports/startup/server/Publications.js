@@ -27,6 +27,10 @@ Meteor.publish('User', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Users.find({ owner: username });
+  }
+  return this.ready();
+});
+
 Meteor.publish('Friends', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
@@ -40,6 +44,10 @@ Meteor.publish('Classes', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Classes.find({ owner: username });
+  }
+  return this.ready();
+});
+
 /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
 Meteor.publish('FriendsAdmin', function publish() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {

@@ -29,10 +29,11 @@ function addUser(data) {
 
 /** Initialize the collection if empty. */
 if (Users.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
+  if (Meteor.settings.defaultUsers) {
     console.log('Creating default data.');
     Meteor.settings.defaultUsers.map(data => addUser(data));
-
+  }
+}
 /** Initialize the database with a default friends document. */
 function addFriend(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);

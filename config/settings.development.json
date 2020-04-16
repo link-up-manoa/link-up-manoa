@@ -13,6 +13,7 @@
   "defaultUsers": [
     { "firstName": "John", "lastName": "Foo", "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
       "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science","owner": "john@foo.com"}
+    ],
 
   "defaultFriends": [
     { "firstName":  "Taylor", "lastName":  "Gabatino", "major":  "Computer Science",
