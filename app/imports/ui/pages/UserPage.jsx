@@ -1,12 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 // import _ from 'underscore@1.0.10';
-import { Container, Header, Loader, Card, Image, Button, Icon, Grid, Menu } from 'semantic-ui-react';
+import { Container, Header, Loader, Card, Image, Button, Icon, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { Users } from '../../api/user/User';
 import { Classes } from '../../api/class/Classes';
-import { NavLink } from 'react-router-dom';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserPage extends React.Component {
@@ -30,10 +30,18 @@ class UserPage extends React.Component {
                 <Card.Meta>Status: {this.props.user[0].status}</Card.Meta>
                 <Card.Meta>Major: {this.props.user[0].dType} - {this.props.user[0].mType} </Card.Meta>
                 <Card.Description>
-                  Classes Taken: ICS 111, 141, 211, 212, 241, 311, 312, 314, 451
+                  Classes Taken:
+                  <ul>
+                    {this.props.classes.filter(obj => obj.status.includes('Taken')).map(
+                        (obj, index) => (<li key={index}>{obj.classAlpha} {obj.classNum}</li>))}
+                  </ul>
                 </Card.Description>
                 <Card.Description>
-                  Classes Currently In: ICS 426, 313, 332, 321
+                  Classes Currently In:
+                  <ul>
+                    {this.props.classes.filter(obj => obj.status.includes('Currently-Taking')).map(
+                        (obj, index) => (<li key={index}>{obj.classAlpha} {obj.classNum}</li>))}
+                  </ul>
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>
