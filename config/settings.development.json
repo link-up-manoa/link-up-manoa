@@ -32,5 +32,10 @@
       "image":  "http://getdrawings.com/free-icon/business-woman-icon-74.png",
       "owner": "john@foo.com"
     }
+  ],
+
+  "defaultReminders": [
+    { "text": "Make New Study Session!", "owner":  "john@foo.com", "dateCreated": "04/20/2020" },
+    { "text": "Meet New Friends!", "owner":  "john@foo.com", "dateCreated": "04/20/2020" }
   ]
 }

@@ -2,8 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
 import { Friends } from '../../api/stuff/Friends.js';
-
-
+import { Reminders } from '../../api/stuff/Reminders.js';
 
 /* eslint-disable no-console */
 
@@ -45,6 +44,21 @@ if (Friends.find().count() === 0) {
   if (Meteor.settings.defaultFriends) {
     console.log('Creating friend data');
     Meteor.settings.defaultFriends.map(data => addFriend(data));
+
+  }
+}
+
+/** Initialize the database with a default friends document. */
+function addReminder(data) {
+  console.log(`  Adding: ${data.name} (${data.owner})`);
+  Reminders.insert(data);
+}
+
+/** Initialize the collection if empty. */
+if (Reminders.find().count() === 0) {
+  if (Meteor.settings.defaultReminders) {
+    console.log('Creating friend data');
+    Meteor.settings.defaultReminders.map(data => addReminder(data));
 
   }
 }
