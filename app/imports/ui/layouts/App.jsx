@@ -35,6 +35,7 @@ class App extends React.Component {
               <ProtectedRoute path="/userpage" component={UserPage}/>
               <ProtectedRoute path="/create" component={CreateStudySession}/>
               <ProtectedRoute path="/friends" component={FriendsPage}/>
+              <ProtectedRoute path="/calen" component={Calendar}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/addClass" component={AddClass}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
