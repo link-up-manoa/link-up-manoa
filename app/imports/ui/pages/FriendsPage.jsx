@@ -49,7 +49,7 @@ class FriendsPage extends React.Component {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  Luke Manning
+                  Sarah Manning
                 </Table.Cell>
                 <Table.Cell>
                   <Button animated>
@@ -62,7 +62,7 @@ class FriendsPage extends React.Component {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  Dakota Loo
+                  Travis Lane
                 </Table.Cell>
                 <Table.Cell>
                   <Button animated>
@@ -112,14 +112,14 @@ class FriendsPage extends React.Component {
           </Grid.Row>
 
           <Grid.Row>
-            <Grid.Column centered>
+            <Grid.Column centered="true">
               <Input
                   action={{
-                    color: 'white',
+                    color: 'grey',
                     labelPosition: 'right',
                     icon: 'plus',
                   }}
-                  actionPosition='right'
+                  actionPosition='left'
                   placeholder='Type Username..'
                   defaultValue='johnf'
               />

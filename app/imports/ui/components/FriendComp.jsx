@@ -39,7 +39,7 @@ export class FriendComp extends React.Component {
 }
 
   /** Require a document to be passed to this component. */
-  Friend.propTypes = {
+  FriendComp.propTypes = {
     friend: PropTypes.object.isRequired,
   };
 
