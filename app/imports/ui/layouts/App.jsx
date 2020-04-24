@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import FriendsPage from '../pages/FriendsPage';
+import Calendar from '../pages/Calendar';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import UserPage from '../pages/UserPage';
 import AddStuff from '../pages/AddStuff';

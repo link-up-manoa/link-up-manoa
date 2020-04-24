@@ -1,11 +1,10 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader } from 'semantic-ui-react';
+import { Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { DateInput, TimeInput, DateTimeInput, DatesRangeInput } from 'semantic-ui-calendar-react';
+import { Form, DateInput, TimeInput, DateTimeInput, DatesRangeInput } from 'semantic-ui-calendar-react';
 import { Stuffs } from '../../api/stuff/Stuff';
-import StuffItem from '../components/StuffItem';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class Calendar extends React.Component {
@@ -13,15 +12,16 @@ constructor(props) {
   super(props);
 
   this.state = {
-    date: '',
+    date: Date,
     time: '',
     dataTime: '',
     datesRange: '',
   };
 }
 
+
   handleChange = (event, { name, value }) => {
-    if (this.state.hasOwnProperty(name)) {
+    if (this.state.hasOwnProperty.call(name, "value")) {
       this.setState({ [name]: value });
     }
   }
@@ -33,7 +33,7 @@ constructor(props) {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const { DateInput } = SemanticUiCalendarReact;
+    // const { DateInput } = SemanticUiCalendarReact;
 
     return (
         <Form>
