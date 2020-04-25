@@ -1,9 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
+
 import { Table, Header, Loader, Grid, Icon, Menu, Input, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Friends } from '../../api/stuff/Friends';
+import { FriendComp } from '../components/FriendComp';
 
 /** Renders a table containing all of the friends documents. */
 class FriendsPage extends React.Component {
@@ -11,7 +13,7 @@ class FriendsPage extends React.Component {
   state = { activeItem: 'friends' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
+/**create local variables that tells who are these friends , how to calculate and retrieve who are the friends, pending, and requeting friends
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -93,21 +95,24 @@ class FriendsPage extends React.Component {
             <Grid.Column width={11}>
               <Menu pointing secondary>
                 <Menu.Item
-                    name='Friends'
+                    name='friends'
                     active={activeItem === 'friends'}
-                    onClick={this.handleItemClick}
+                    onClick={() => this.handleItemClick('friends')}
                 />
                 <Menu.Item
-                    name='Pending'
+                    name='pending'
                     active={activeItem === 'pending'}
-                    onClick={this.handleItemClick}
+                    onClick={() => this.handleItemClick('pending')}
                 />
                 <Menu.Item
-                    name='Requests'
+                    name='requests'
                     active={activeItem === 'requests'}
-                    onClick={this.handleItemClick}
+                    onClick={() => this.handleItemClick('requests')}
                 />
               </Menu>
+              {this.props.friends.map((friend) => <FriendComp friend={friend} />)}
+              update code to create card that says the name of friend
+              state variable- friendstodisplay-- update state variable to which friends belongs to which
             </Grid.Column>
           </Grid.Row>
 
@@ -116,12 +121,9 @@ class FriendsPage extends React.Component {
               <Input
                   action={{
                     color: 'grey',
-                    labelPosition: 'right',
                     icon: 'plus',
                   }}
-                  actionPosition='left'
                   placeholder='Type Username..'
-                  defaultValue='johnf'
               />
             </Grid.Column>
           </Grid.Row>
