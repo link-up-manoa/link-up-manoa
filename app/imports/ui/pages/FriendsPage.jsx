@@ -115,13 +115,10 @@ class FriendsPage extends React.Component {
             <Grid.Column centered>
               <Input
                   action={{
-                    color: 'white',
-                    labelPosition: 'right',
+                    color: 'grey',
                     icon: 'plus',
                   }}
-                  actionPosition='right'
                   placeholder='Type Username..'
-                  defaultValue='johnf'
               />
             </Grid.Column>
           </Grid.Row>
