@@ -112,7 +112,7 @@ class FriendsPage extends React.Component {
           </Grid.Row>
 
           <Grid.Row>
-            <Grid.Column centered>
+            <Grid.Column>
               <Input
                   action={{
                     color: 'grey',
