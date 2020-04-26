@@ -4,6 +4,8 @@ import { Table, Header, Loader, Grid, Icon, Menu, Input, Button } from 'semantic
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Friends } from '../../api/stuff/Friends';
+import { FriendComp } from '../components/FriendComp';
+
 
 /** Renders a table containing all of the friends documents. */
 class FriendsPage extends React.Component {
