@@ -97,7 +97,8 @@ class FriendsPage extends React.Component {
                 <Menu.Item
                     name='friends'
                     active={activeItem === 'friends'}
-                    onClick={() => this.handleItemClick('friends')}                />
+                    onClick={() => this.handleItemClick('friends')}
+                />
                 <Menu.Item
                     name='pending'
                     active={activeItem === 'pending'}
@@ -109,7 +110,7 @@ class FriendsPage extends React.Component {
                     onClick={() => this.handleItemClick('requests')}
                 />
               </Menu>
-              {this.props.friends.map((friend) => <FriendComp friend={friend} />)}
+              {this.props.friends.map((friend, index) => <FriendComp key={index} friend={friend} />)}
             </Grid.Column>
           </Grid.Row>
 

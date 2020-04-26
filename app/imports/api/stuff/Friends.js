@@ -16,8 +16,7 @@ const FriendsSchema = new SimpleSchema({
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
-Friends
-.attachSchema(FriendsSchema);
+Friends.attachSchema(FriendsSchema);
 
 /** Make the collection and schema available to other code. */
 export { Friends, FriendsSchema };

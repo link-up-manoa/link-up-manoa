@@ -15,7 +15,7 @@ import Signout from '../pages/Signout';
 
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
-class FriendApp extends React.Component {
+export class FriendApp extends React.Component {
   render() {
     return (
         <Router>
@@ -84,5 +84,3 @@ AdminProtectedRoute.propTypes = {
   component: PropTypes.func.isRequired,
   location: PropTypes.object,
 };
-
-export default FriendApp;

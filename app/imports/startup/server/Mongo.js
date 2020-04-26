@@ -2,11 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
 import { Friends } from '../../api/stuff/Friends.js';
-
-
-
 /* eslint-disable no-console */
-
 /** Initialize the database with a default data document. */
 function addData(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);
@@ -45,6 +41,5 @@ if (Friends.find().count() === 0) {
   if (Meteor.settings.defaultFriends) {
     console.log('Creating friend data');
     Meteor.settings.defaultFriends.map(data => addFriend(data));
-
   }
 }
