@@ -49,7 +49,7 @@ class FriendsPage extends React.Component {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  Luke Manning
+                  Sarah Manning
                 </Table.Cell>
                 <Table.Cell>
                   <Button animated>
@@ -62,7 +62,7 @@ class FriendsPage extends React.Component {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  Dakota Loo
+                  Travis Lane
                 </Table.Cell>
                 <Table.Cell>
                   <Button animated>
@@ -93,21 +93,21 @@ class FriendsPage extends React.Component {
             <Grid.Column width={11}>
               <Menu pointing secondary>
                 <Menu.Item
-                    name='Friends'
+                    name='friends'
                     active={activeItem === 'friends'}
-                    onClick={this.handleItemClick}
-                />
+                    onClick={() => this.handleItemClick('friends')}                />
                 <Menu.Item
-                    name='Pending'
+                    name='pending'
                     active={activeItem === 'pending'}
-                    onClick={this.handleItemClick}
+                    onClick={() => this.handleItemClick('pending')}
                 />
                 <Menu.Item
-                    name='Requests'
+                    name='requests'
                     active={activeItem === 'requests'}
-                    onClick={this.handleItemClick}
+                    onClick={() => this.handleItemClick('requests')}
                 />
               </Menu>
+              {this.props.friends.map((friend) => <FriendComp friend={friend} />)}
             </Grid.Column>
           </Grid.Row>
 
