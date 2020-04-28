@@ -3,7 +3,6 @@ import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SubmitField, TextField, NumField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
-import PropTypes from 'prop-types';
 import SimpleSchema from 'simpl-schema';
 import { Sessions } from '../../api/session/Session';
 
@@ -55,9 +54,5 @@ class AddFeed extends React.Component {
     );
   }
 }
-
-AddFeed.propTypes = {
-  owner: PropTypes.string.isRequired,
-};
 
 export default AddFeed;

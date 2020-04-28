@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-export class Feed extends React.Component {
+export class FeedCont extends React.Component {
   render() {
     return (
         <Feed.Event >
@@ -22,9 +22,9 @@ export class Feed extends React.Component {
 }
 
 /** Require a document to be passed to this component. */
-Feed.propTypes = {
+FeedCont.propTypes = {
   feed: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
-export default withRouter(Feed);
+export default withRouter(FeedCont);

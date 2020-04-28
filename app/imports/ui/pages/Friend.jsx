@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Card } from 'semantic-ui-react';
+import { Loader, Card, Header, Container } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Friends } from '../../api/stuff/Friends';
@@ -13,6 +13,7 @@ class Friend extends React.Component {
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
+
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
