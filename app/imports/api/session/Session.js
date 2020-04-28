@@ -3,19 +3,21 @@ import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
 /** Define a Mongo collection to hold the data. */
-const Feeds = new Mongo.Collection('Feeds');
+const Sessions = new Mongo.Collection('Session');
 
 /** Define a schema to specify the structure of each document in the collection. */
-const FeedsSchema = new SimpleSchema({
+const SessionSchema = new SimpleSchema({
   username: String,
   time: Number,
   date: Date,
   place: String,
+  members: String,
   topic: String,
+  questions: String,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
-Feeds.attachSchema(FeedsSchema);
+Sessions.attachSchema(SessionSchema);
 
 /** Make the collection and schema available to other code. */
-export { Feeds, FeedsSchema };
+export { Sessions, SessionSchema };

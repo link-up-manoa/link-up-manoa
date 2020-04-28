@@ -2,11 +2,10 @@ import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SubmitField, TextField, NumField } from 'uniforms-semantic';
 import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import PropTypes from 'prop-types';
 import SimpleSchema from 'simpl-schema';
-import { Feeds } from '../../api/feed/Feeds';
+import { Sessions } from '../../api/session/Session';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
@@ -23,8 +22,7 @@ class AddFeed extends React.Component {
   /** On submit, insert the data. */
   submit(data, formRef) {
     const { username, time, date, place, topic } = data;
-    const owner = Meteor.user().username;
-    Feeds.insert({ username, time, date, place, topic, owner },
+    Sessions.insert({ username, time, date, place, topic },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -41,14 +39,13 @@ class AddFeed extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Calendar Reminder</Header>
+            <Header as="h2" textAlign="center">To-Do:</Header>
             <AutoForm ref={ref => { fRef = ref; }} schema={formSchema} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
-                <TextField name='username'/>
-                <NumField name='time' decimal={false}/>
-                <NumField name='date' decimal={false}/>
-                <TextField name='place'/>
-                <TextField name='topic'/>
+                <NumField label="Time" name='time' decimal={false}/>
+                <NumField label="Date" name='date' decimal={false}/>
+                <TextField label="Place:" name='place'/>
+                <TextField label="Topic:" name='topic'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
               </Segment>

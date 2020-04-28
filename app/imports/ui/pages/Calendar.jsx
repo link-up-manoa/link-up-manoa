@@ -1,9 +1,8 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import {Loader } from 'semantic-ui-react';
-import { withTracker } from 'meteor/react-meteor-data';
+import { withRouter } from 'react-router-dom';
+import { Loader, Grid, Header, Divider } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { Friends } from '../../api/stuff/Friends';
+import AddFeed from '../components/AddFeed';
 
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
@@ -15,28 +14,27 @@ class Calendar extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-        <Container>
+        <Grid container>
           <Header as="h2" textAlign="center" inverted>Calendar Reminders</Header>
-          <Feed>
-            {this.props.feeds.map((feed, index) => <Feed key={index} feed={feed}/>)}
-          </Feed>
-        </Container>
+          <Grid.Row columns={2}>
+            <Grid.Column width={10}>
+              lists the session
+            </Grid.Column>
+            <Divider vertical/>
+            <Grid.Column width={6}>
+              <AddFeed owner={this.props.session.username}/>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
     );
   }
 }
 
 /** Require an array of Stuff documents in the props. */
 Calendar.propTypes = {
-  feed: PropTypes.array.isRequired,
+  session: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withTracker(() => {
-  // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Feeds');
-  return {
-    feed: Feeds.find({}).fetch(),
-    ready: subscription.ready(),
-  };
-})(Calendar);
+export default withRouter(Calendar);

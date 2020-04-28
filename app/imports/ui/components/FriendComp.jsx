@@ -10,8 +10,8 @@ export class FriendComp extends React.Component {
 
   removeItem(docID) {
     /* eslint-disable-next-line */
-    if (confirm("Do you want to delete this contact?") == true) {
-      // eslint-disable-next-line no-template-curly-in-string
+    if (confirm("Do you want to delete this contact?") === true) {
+      // eslint-disable-next-line no-template-curly-in-string,no-console
       console.log('Item to delete: ${docID}');
       Friends.remove(docID);
     }
@@ -22,8 +22,8 @@ export class FriendComp extends React.Component {
         <Card>
           <Card.Content>
             <Image
-                floated='left';
-                size='mini';
+                floated='left'
+                size='mini'
                 src={this.props.friend.image}
             />
             <Card.Header>{this.props.friend.firstName} {this.props.friend.lastName}</Card.Header>

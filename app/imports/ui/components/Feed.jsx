@@ -9,10 +9,9 @@ export class Feed extends React.Component {
     return (
         <Feed.Event >
           <Feed.Content>
-            <Feed.Date content={this.props.feed.date)} />
-            <Feed.Time content={this.props.feed.time}/>
+            <Feed.Date content={this.props.feed.date.toLocaleDateString('en-US')} />
+            <Feed.Date>{this.props.feed.time}</Feed.Date>
             <Feed.Summary>
-              {this.props.feed.username}
               {this.props.feed.place}
               {this.props.feed.topic}
             </Feed.Summary>
