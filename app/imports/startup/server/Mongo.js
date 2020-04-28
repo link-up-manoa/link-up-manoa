@@ -3,8 +3,6 @@ import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
 import { Friends } from '../../api/stuff/Friends.js';
 
-
-
 /* eslint-disable no-console */
 
 /** Initialize the database with a default data document. */

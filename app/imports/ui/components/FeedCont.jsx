@@ -9,11 +9,11 @@ export class FeedCont extends React.Component {
     return (
         <Feed.Event >
           <Feed.Content>
-            <Feed.Date content={this.props.feed.date.toLocaleDateString('en-US')} />
-            <Feed.Date>{this.props.feed.time}</Feed.Date>
+            <Feed.Date content={this.props.session.date.toLocaleDateString('en-US')} />
+            <Feed.Date>{this.props.session.time}</Feed.Date>
             <Feed.Summary>
-              {this.props.feed.place}
-              {this.props.feed.topic}
+              {this.props.session.place}
+              {this.props.session.topic}
             </Feed.Summary>
           </Feed.Content>
         </Feed.Event>
@@ -23,7 +23,7 @@ export class FeedCont extends React.Component {
 
 /** Require a document to be passed to this component. */
 FeedCont.propTypes = {
-  feed: PropTypes.object.isRequired,
+  session: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
