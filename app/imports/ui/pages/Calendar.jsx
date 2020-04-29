@@ -1,12 +1,22 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Loader, Grid, Header, Checkbox, Container } from 'semantic-ui-react';
+import { Loader, Feed, Header, Card, Grid, Checkbox, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
-import { Session } from '../components/Session';
+// import { Study } from '../components/Study';
 import { Notes } from '../../api/note/Notes';
+// import { Card } from 'semantic-ui-react';
+import Note from '../components/Note';
+import AddNote from '../components/AddNote';
 
+
+const defaultSession = [
+  { username: 'johnfoo', time: '300', date: '05/02/2020 03:30 PM', place: 'Hamilton Library',
+    members: 'Jatin, Kameron, Taylor, Aubrie', topic: 'Back-end', questions: 'What materials do we need?',
+    owner: 'john@foo.com',
+  },
+];
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -17,23 +27,85 @@ class Calendar extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
+        // <Grid container columns={1} celled='internally'>
+        //   <Grid.Row>
+        //     <Grid.Column>
+        //         <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
+        //           <Card.Group>
+        //           {this.props.sessions.map((sesh, index) => <Study
+        //               key={index}
+        //               sesh={sesh}
+        //               notes={this.props.notes.filter(note => (note.contactId === sesh._id))}/>)}
+        //         </Card.Group>
+        //     </Grid.Column>
+        //   </Grid.Row>
+        //
+        //    <Grid.Row>
+        //     <Grid.Column>
+        //       <Header as="h2" textAlign="center" inverted>Reminders!</Header>
+        //       <Container>
+        //       <Checkbox inverted="true" label='Create study guide of chapter 3'/>
+        //       <br/>
+        //       <Checkbox inverted="true" label='Bring calculator'/>
+        //       <br/>
+        //       <Checkbox inverted="true" label='Make diagram for project'/>
+        //       <br/>
+        //       </Container>
+        //     </Grid.Column>
+        //    </Grid.Row>
+        // </Grid>
         <Grid container columns={1} celled='internally'>
           <Grid.Row>
             <Grid.Column>
-                <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
-                  <Card.Group>
-                  {this.props.sessions.map((session, index) => <Session
-                      key={index}
-                      session={session}
-                      notes={this.props.notes.filter(note => (note.contactId === session._id))}/>)}
-                </Card.Group>
+              <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
+        <Card.Group>
+          <Card>
+            <Card.Content>
+              <Card.Header>{defaultSession.topic}</Card.Header>
+              <Card.Meta>{defaultSession.date}</Card.Meta>
+              <Card.Description>
+                Location: {defaultSession.place}
+                <br/>
+                Members: {defaultSession.members}
+              </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+              <Feed>
+                {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+              </Feed>
+            </Card.Content>
+            <Card.Content extra>
+              <AddNote/>
+            </Card.Content>
+          </Card>
+
+          <Card>
+            <Card.Content>
+              <Card.Header>Team Bonding</Card.Header>
+              <Card.Meta>05/18/2020 04:00 PM</Card.Meta>
+              <Card.Description>
+                Location: Zoom online
+                <br/>
+                Members: Julian, Brooke, Danny
+              </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <Feed>
+                  {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+                </Feed>
+              </Card.Content>
+              <Card.Content extra>
+                <AddNote/>
+              </Card.Content>
+          </Card>
+        </Card.Group>
             </Grid.Column>
           </Grid.Row>
 
-           <Grid.Row>
-            <Grid.Column>
-              <Header as="h2" textAlign="center" inverted>Reminders!</Header>
-              <Container>
+        <Grid.Row>
+          <Grid.Column>
+            <Header as="h2" textAlign="center" inverted>Reminders</Header>
+            <Container>
               <Checkbox inverted="true" label='Create study guide of chapter 3'/>
               <br/>
               <Checkbox inverted="true" label='Bring calculator'/>
@@ -41,8 +113,9 @@ class Calendar extends React.Component {
               <Checkbox inverted="true" label='Make diagram for project'/>
               <br/>
               </Container>
-            </Grid.Column>
-           </Grid.Row>
+          </Grid.Column>
+        </Grid.Row>
+
         </Grid>
     );
   }

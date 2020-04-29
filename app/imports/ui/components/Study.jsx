@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, Image, Feed, Button } from 'semantic-ui-react';
+import { Card, Feed } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Note from './Note';
 import AddNote from './AddNote';
 
-export class Session extends React.Component {
+export class Study extends React.Component {
 
   render() {
     return (
@@ -28,13 +28,14 @@ export class Session extends React.Component {
               <AddNote owner={this.props.sessions.owner} contactId={this.props.sessions._id}/>
             </Card.Content>
         </Card>
-    )
+    );
   }
 }
 
-Session.propTypes = {
+/** Require a document to be passed to this component. */
+Study.propTypes = {
   sessions: PropTypes.object.isRequired,
   notes: PropTypes.array.isRequired,
 };
 
-export default withRouter(Session);
+export default withRouter(Study);
