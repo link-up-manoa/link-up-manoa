@@ -9,7 +9,10 @@ import { FriendComp } from '../components/FriendComp';
 
 /** Renders a table containing all of the friends documents. */
 class FriendsPage extends React.Component {
+  state = { activeItem: 'friends' }
 
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+/**create local variables that tells who are these friends , how to calculate and retrieve who are the friends, pending, and requeting friends
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (
@@ -87,12 +90,95 @@ class FriendsPage extends React.Component {
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/friends/fri" key='fri'>Friends</Menu.Item>
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/friends/pend" key='pend'>Pending</Menu.Item>
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/friends/req" key='req'>Requests</Menu.Item>
+          <Table fixed basic='very' celled collapsing>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Recommendations:</Table.HeaderCell>
+                <Table.HeaderCell>Add</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell>
+                  Delilah Hills
+                </Table.Cell>
+                <Table.Cell>
+                  <Button animated>
+                    <Button.Content hidden>Add</Button.Content>
+                    <Button.Content visible>
+                      <Icon name="plus"/>
+                    </Button.Content>
+                  </Button>
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
+                  Sarah Manning
+                </Table.Cell>
+                <Table.Cell>
+                  <Button animated>
+                    <Button.Content hidden>Add</Button.Content>
+                    <Button.Content visible>
+                      <Icon name="plus"/>
+                    </Button.Content>
+                  </Button>
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
+                  Travis Lane
+                </Table.Cell>
+                <Table.Cell>
+                  <Button animated>
+                    <Button.Content hidden>Add</Button.Content>
+                    <Button.Content visible>
+                      <Icon name="plus"/>
+                    </Button.Content>
+                  </Button>
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
+                  Calli Dunn
+                </Table.Cell>
+                <Table.Cell>
+                  <Button animated>
+                    <Button.Content hidden>Add</Button.Content>
+                    <Button.Content visible>
+                      <Icon name="plus"/>
+                    </Button.Content>
+                  </Button>
+                </Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>
+            </Grid.Column>
+
+            <Grid.Column width={11}>
+              <Menu pointing secondary>
+                <Menu.Item
+                    name='friends'
+                    active={activeItem === 'friends'}
+                    onClick={() => this.handleItemClick('friends')}
+                />
+                <Menu.Item
+                    name='pending'
+                    active={activeItem === 'pending'}
+                    onClick={() => this.handleItemClick('pending')}
+                />
+                <Menu.Item
+                    name='requests'
+                    active={activeItem === 'requests'}
+                    onClick={() => this.handleItemClick('requests')}
+                />
               </Menu>
+              {this.props.friends.map((friend) => <FriendComp friend={friend} />)}
             </Grid.Column>
           </Grid.Row>
 
           <Grid.Row>
             <Grid.Column>
+            <Grid.Column centered="true">
               <Input
                   action={{
                     color: 'grey',
