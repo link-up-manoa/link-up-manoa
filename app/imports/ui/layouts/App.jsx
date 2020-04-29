@@ -19,6 +19,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import CreateStudySession from '../pages/CreateStudySession';
+import LevelUp from '../pages/LevelUp';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -34,6 +35,7 @@ class App extends React.Component {
               <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/userpage" component={UserPage}/>
               <ProtectedRoute path="/create" component={CreateStudySession}/>
+              <ProtectedRoute path="/levelup" component={LevelUp}/>
               <ProtectedRoute path="/friends" component={FriendsPage}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/addClass" component={AddClass}/>
