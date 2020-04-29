@@ -11,28 +11,29 @@ export class Session extends React.Component {
     return (
         <Card>
           <Card.Content>
-            <Card.Header>{this.props.session.topic}</Card.Header>
-            <Card.Meta>{this.props.session.date}</Card.Meta>
+            <Card.Header>{this.props.sessions.topic}</Card.Header>
+            <Card.Meta>{this.props.sessions.date}</Card.Meta>
             <Card.Description>
-              {this.props.session.place}
-              {this.props.session.members}
+              Location: {this.props.sessions.place}
+              <br/>
+              Members: {this.props.sessions.members}
             </Card.Description>
+          </Card.Content>
             <Card.Content extra>
               <Feed>
                 {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
               </Feed>
             </Card.Content>
             <Card.Content extra>
-              <AddNote owner={this.props.session.owner} contactId={this.props.session._id}/>
+              <AddNote owner={this.props.sessions.owner} contactId={this.props.sessions._id}/>
             </Card.Content>
-          </Card.Content>
         </Card>
     )
   }
 }
 
 Session.propTypes = {
-  session: PropTypes.object.isRequired,
+  sessions: PropTypes.object.isRequired,
   notes: PropTypes.array.isRequired,
 };
 

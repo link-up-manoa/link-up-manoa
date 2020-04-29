@@ -50,15 +50,7 @@ Meteor.publish('Classes', function publish() {
   return this.ready();
 });
 
-/** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-Meteor.publish('FriendsAdmin', function publish() {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Friends.find();
-  }
-  return this.ready();
-});
-
-Meteor.publish('Sessions', function publish() {
+Meteor.publish('Session', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Sessions.find({ owner: username });
