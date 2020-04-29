@@ -10,7 +10,6 @@ import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import FriendsPage from '../pages/FriendsPage';
 import Calendar from '../pages/Calendar';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
 import UserAdminPage from '../pages/UserAdminPage';
 import UserPage from '../pages/UserPage';
 import AddStuff from '../pages/AddStuff';
