@@ -1,28 +1,17 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
+import { NavLink } from 'react-router-dom'
 import { Table, Header, Loader, Grid, Icon, Menu, Input, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Friends } from '../../api/stuff/Friends';
 import { FriendComp } from '../components/FriendComp';
 
-
 /** Renders a table containing all of the friends documents. */
 class FriendsPage extends React.Component {
 
-  state = { activeItem: 'friends' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
-
-  /** Render the page once subscriptions have been received. */
-  renderPage() {
-    const { activeItem } = this.state;
-
     return (
         <Grid container celled='internally'>
           <Header as="h2" textAlign="center">Your Friends</Header>
@@ -93,24 +82,12 @@ class FriendsPage extends React.Component {
             </Grid.Column>
 
             <Grid.Column width={11}>
-              <Menu pointing secondary>
-                <Menu.Item
-                    name='friends'
-                    active={activeItem === 'friends'}
-                    onClick={() => this.handleItemClick('friends')}
-                />
-                <Menu.Item
-                    name='pending'
-                    active={activeItem === 'pending'}
-                    onClick={() => this.handleItemClick('pending')}
-                />
-                <Menu.Item
-                    name='requests'
-                    active={activeItem === 'requests'}
-                    onClick={() => this.handleItemClick('requests')}
-                />
+              <Menu pointing>
+                <Menu.Item as={NavLink} activeClassName="" exact to="/"/>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/friends/fri" key='fri'>Friends</Menu.Item>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/friends/pend" key='pend'>Pending</Menu.Item>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/friends/req" key='req'>Requests</Menu.Item>
               </Menu>
-              {this.props.friends.map((friend, index) => <FriendComp key={index} friend={friend} />)}
             </Grid.Column>
           </Grid.Row>
 

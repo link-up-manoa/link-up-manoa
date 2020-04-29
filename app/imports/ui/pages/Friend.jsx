@@ -1,43 +1,68 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import { Loader, Card } from 'semantic-ui-react';
-import { withTracker } from 'meteor/react-meteor-data';
-import PropTypes from 'prop-types';
-import { Friends } from '../../api/stuff/Friends';
-import FriendComp from '../components/FriendComp';
+import { Card, Fragment, Rating } from 'semantic-ui-react';
+
+
+
+const defaultFriends = [
+  {
+    firstName: 'Taylor',
+    lastName: 'Gabatino',
+    major: 'Computer Science',
+    image: 'http://getdrawings.com/free-icon/business-woman-icon-74.png',
+    owner: 'john@foo.com',
+    User: 'friends'
+  },
+  {
+    firstName: 'Jatin',
+    lastName: 'Pandya',
+    major: 'Computer Science',
+    image: 'https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png',
+    owner: 'john@foo.com',
+    User: 'friends'
+  },
+  {
+    firstName: 'Kameron',
+    lastName: 'Wong',
+    major: 'Computer Science',
+    image: 'https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png',
+    owner: 'john@foo.com',
+    User: 'pending'
+  },
+  {
+    firstName: 'Aubrie',
+    lastName: 'Usui',
+    major: 'Computer Science',
+    image: 'http://getdrawings.com/free-icon/business-woman-icon-74.png',
+    owner: 'john@foo.com',
+    User: 'requests'
+  },
+]
 
 /** Renders a table containing all of the friends documents. */
 class Friend extends React.Component {
+const newList;
+  newList = {_.filter(defaultFriends, function(user){return user === 'friends'})};
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
-
-  /** Render the page once subscriptions have been received. */
-  renderPage() {
     return (
-        <Card.Group itemsPerRow={3}>
-          {this.props.friends.map((friend, index) => <FriendComp
-              key={index}
-              friend={friend}/>)}
-        </Card.Group>
-    );
+      <Card.Group doubling itemsPerRow={3}>
+        <Card key={newList.firstName}>
+          <Image src={newList.image}/>
+          <Card.Content>
+            <Fragment>
+              <Card.Header>{newList.firstName} {newList.lastName}</Card.Header>
+              <Card.Meta>{newList.major}</Card.Meta>
+            </Fragment>
+          </Card.Content>
+
+          <Card.Content extra>
+            <Rating icon='star' defaultRating={3} maxRating={5} />
+          </Card.Content>
+        </Card>
+      </Card.Group>
+    )
   }
 }
 
-/** Require an array of Stuff documents in the props. */
-Friend.propTypes = {
-  friends: PropTypes.array.isRequired,
-  ready: PropTypes.bool.isRequired,
-};
-
-/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withTracker(() => {
-  // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Friends');
-  return {
-    friends: Friends.find({}).fetch(),
-    ready: subscription.ready(),
-  };
-})(Friend);
+export default Friend;
