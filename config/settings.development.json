@@ -1,11 +1,30 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" },
-    { "email": "taylor@foo.com", "password": "changeme" },
-    { "email": "jatin@foo.com", "password": "changeme" },
-    { "email": "kameron@foo.com", "password": "changeme" },
-    { "email": "aubrie@foo.com", "password": "changeme" }
+    {
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "role": "admin"
+    },
+    {
+      "email": "john@foo.com",
+      "password": "changeme"
+    },
+    {
+      "email": "taylor@foo.com",
+      "password": "changeme"
+    },
+    {
+      "email": "jatin@foo.com",
+      "password": "changeme"
+    },
+    {
+      "email": "kameron@foo.com",
+      "password": "changeme"
+    },
+    {
+      "email": "aubrie@foo.com",
+      "password": "changeme"
+    },
     {
       "email": "admin@foo.com",
       "password": "changeme",
@@ -16,7 +35,6 @@
       "password": "changeme"
     }
   ],
-
   "defaultData": [
     {
       "name": "Basket",
@@ -43,38 +61,6 @@
       "condition": "excellent"
     }
   ],
-
-  "defaultUsers": [
-    { "firstName": "John", "lastName": "Foo", "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
-      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science","owner": "john@foo.com"
-    },
-    { "firstName":  "Taylor", "lastName":  "Gabatino",
-      "image": "http://getdrawings.com/free-icon/business-woman-icon-74.png",
-      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science",
-      "owner": "taylor@foo.com"
-    },
-    { "firstName":  "Jatin", "lastName":  "Pandya",
-      "image":  "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
-      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science",
-      "owner": "jatin@foo.com"
-    },
-    { "firstName":  "Kameron", "lastName":  "Wong",
-      "image":  "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
-      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science",
-      "owner": "kameron@foo.com"
-    },
-    { "firstName":  "Aubrie", "lastName":  "Usui",
-      "image":  "http://getdrawings.com/free-icon/business-woman-icon-74.png",
-      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science",
-      "owner": "aubrie@foo.com"
-    },
-    { "firstName":  "Admin", "lastName":  "Foo",
-      "image":  "http://getdrawings.com/free-icon/business-woman-icon-74.png",
-      "rating": "Advisor", "status":"Advisor", "dType":"PhD", "mType":"Computer Science",
-      "owner": "admin@foo.com"
-    }
-    ],
-
   "defaultFriends": [
     {
       "firstName": "Taylor",
@@ -109,11 +95,78 @@
       "User": "friends"
     }
   ],
-
   "defaultSession": [
-    {"username": "johnfoo", "time":  300, "date":  "05/02/2020 03:30 PM", "place": "Hamilton Library",
-      "members": "Jatin, Kameron, Taylor, Aubrie", "topic": "Back-end", "questions": "What materials do we need?",
+    {
+      "username": "johnfoo",
+      "time": 300,
+      "date": "05/02/2020 03:30 PM",
+      "place": "Hamilton Library",
+      "members": "Jatin, Kameron, Taylor, Aubrie",
+      "topic": "Back-end",
+      "questions": "What materials do we need?",
       "owner": "john@foo.com"
+    }
+  ],
+  "defaultUsers": [
+    {
+      "firstName": "John",
+      "lastName": "Foo",
+      "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
+      "rating": "Sensei",
+      "status": "UG-Student",
+      "dType": "BS",
+      "mType": "Computer Science",
+      "owner": "john@foo.com"
+    },
+    {
+      "firstName": "Taylor",
+      "lastName": "Gabatino",
+      "image": "http://getdrawings.com/free-icon/business-woman-icon-74.png",
+      "rating": "Sensei",
+      "status": "UG-Student",
+      "dType": "BS",
+      "mType": "Computer Science",
+      "owner": "taylor@foo.com"
+    },
+    {
+      "firstName": "Jatin",
+      "lastName": "Pandya",
+      "image": "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
+      "rating": "Sensei",
+      "status": "UG-Student",
+      "dType": "BS",
+      "mType": "Computer Science",
+      "owner": "jatin@foo.com"
+    },
+    {
+      "firstName": "Kameron",
+      "lastName": "Wong",
+      "image": "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
+      "rating": "Sensei",
+      "status": "UG-Student",
+      "dType": "BS",
+      "mType": "Computer Science",
+      "owner": "kameron@foo.com"
+    },
+    {
+      "firstName": "Aubrie",
+      "lastName": "Usui",
+      "image": "http://getdrawings.com/free-icon/business-woman-icon-74.png",
+      "rating": "Sensei",
+      "status": "UG-Student",
+      "dType": "BS",
+      "mType": "Computer Science",
+      "owner": "aubrie@foo.com"
+    },
+    {
+      "firstName": "Admin",
+      "lastName": "Foo",
+      "image": "http://getdrawings.com/free-icon/business-woman-icon-74.png",
+      "rating": "Advisor",
+      "status": "Advisor",
+      "dType": "PhD",
+      "mType": "Computer Science",
+      "owner": "admin@foo.com"
     }
   ]
 }
