@@ -26,68 +26,68 @@ class FriendsPage extends React.Component {
           <Header as="h2" textAlign="center">Your Friends</Header>
           <Grid.Row>
             <Grid.Column width={5}>
-          <Table fixed basic='very' celled collapsing>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Recommendations:</Table.HeaderCell>
-                <Table.HeaderCell>Add</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  Delilah Hills
-                </Table.Cell>
-                <Table.Cell>
-                  <Button animated>
-                    <Button.Content hidden>Add</Button.Content>
-                    <Button.Content visible>
-                      <Icon name="plus"/>
-                    </Button.Content>
-                  </Button>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  Luke Manning
-                </Table.Cell>
-                <Table.Cell>
-                  <Button animated>
-                    <Button.Content hidden>Add</Button.Content>
-                    <Button.Content visible>
-                      <Icon name="plus"/>
-                    </Button.Content>
-                  </Button>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  Dakota Loo
-                </Table.Cell>
-                <Table.Cell>
-                  <Button animated>
-                    <Button.Content hidden>Add</Button.Content>
-                    <Button.Content visible>
-                      <Icon name="plus"/>
-                    </Button.Content>
-                  </Button>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  Calli Dunn
-                </Table.Cell>
-                <Table.Cell>
-                  <Button animated>
-                    <Button.Content hidden>Add</Button.Content>
-                    <Button.Content visible>
-                      <Icon name="plus"/>
-                    </Button.Content>
-                  </Button>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
+              <Table fixed basic='very' celled collapsing>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Recommendations:</Table.HeaderCell>
+                    <Table.HeaderCell>Add</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  <Table.Row>
+                    <Table.Cell>
+                      Delilah Hills
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button animated>
+                        <Button.Content hidden>Add</Button.Content>
+                        <Button.Content visible>
+                          <Icon name="plus"/>
+                        </Button.Content>
+                      </Button>
+                    </Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell>
+                      Luke Manning
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button animated>
+                        <Button.Content hidden>Add</Button.Content>
+                        <Button.Content visible>
+                          <Icon name="plus"/>
+                        </Button.Content>
+                      </Button>
+                    </Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell>
+                      Dakota Loo
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button animated>
+                        <Button.Content hidden>Add</Button.Content>
+                        <Button.Content visible>
+                          <Icon name="plus"/>
+                        </Button.Content>
+                      </Button>
+                    </Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell>
+                      Calli Dunn
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button animated>
+                        <Button.Content hidden>Add</Button.Content>
+                        <Button.Content visible>
+                          <Icon name="plus"/>
+                        </Button.Content>
+                      </Button>
+                    </Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
             </Grid.Column>
 
             <Grid.Column width={11}>

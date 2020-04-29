@@ -1,9 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Loader, Grid, Header, Divider, Checkbox, Input } from 'semantic-ui-react';
+import { Card, Loader, Grid, Header, Divider, Checkbox, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
+import { Session } from '../components/Session';
+import { Notes } from '../../api/note/Notes';
 
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
@@ -16,19 +18,24 @@ class Calendar extends React.Component {
   renderPage() {
     return (
         <Grid container>
-          <Header as="h2" textAlign="center" inverted>Calendar Reminders</Header>
-          <Grid.Row columns={2}>
-            <Grid.Column width={11}>
+          <Grid.Row>
+                <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
+                <Card.Group>
+                  {this.props.sessions.map((session, index) => <Session
+                      key={index}
+                      session={session}
+                      notes={this.props.notes.filter(note => (note.contactId === session._id))}/>)}
+                </Card.Group>
+          </Grid.Row>
 
-            </Grid.Column>
-
-            <Divider vertical/>
-
-            <Grid.Column width={5}>
-              <Checkbox>
-                <Input placeholder='Type your reminder...'/>
-              </Checkbox>
-            </Grid.Column>
+          <Grid.Row>
+              <Header as="h2" textAlign="center" inverted>Reminders!</Header>
+              <Checkbox label='Create study guide of chapter 3'/>
+              <br/>
+              <Checkbox label='Bring calculator'/>
+              <br/>
+              <Checkbox label='Make diagram for project'/>
+              <br/>
           </Grid.Row>
         </Grid>
     );
@@ -37,15 +44,17 @@ class Calendar extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 Calendar.propTypes = {
-  session: PropTypes.array.isRequired,
+  sessions: PropTypes.array.isRequired,
+  notes: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   const subscription = Meteor.subscribe('Sessions');
+  const subscription2 = Meteor.subscribe('Notes');
   return {
-    session: Sessions.find({}).fetch(),
-    ready: subscription.ready(),
-  };
+    sessions: Sessions.find({}).fetch(),
+    notes: Notes.find({}).fetch(),
+    ready: subscription.ready() && subscription2.ready(),  };
 })(Calendar);

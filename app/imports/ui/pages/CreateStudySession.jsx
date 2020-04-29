@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField, DateField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
@@ -47,7 +47,7 @@ class CreateStudySession extends React.Component {
               <Segment>
                 <TextField name='username'/>
                 <NumField name='time' decimal={false}/>
-                <NumField name='date' decimal={false}/>
+                <DateField name='date' decimal={false}/>
                 <TextField name='place'/>
                 <TextField name='members'/>
                 <TextField name='topic'/>
