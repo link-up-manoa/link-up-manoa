@@ -32,7 +32,7 @@ if (Users.find().count() === 0) {
 }
 /** Initialize the database with a default friends document. */
 function addFriend(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
+  console.log(`  Adding: ${data.firstName} ${data.lastName} (${data.owner})`);
   Friends.insert(data);
 }
 
