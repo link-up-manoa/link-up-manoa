@@ -1,8 +1,7 @@
 import React from 'react';
-import { Card, Image, Rating } from 'semantic-ui-react';
+import { Card, Image, Rating, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import { Friends } from '../../api/stuff/Friends';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -10,7 +9,7 @@ export class FriendComp extends React.Component {
 
   removeItem(docID) {
     /* eslint-disable-next-line */
-    if (confirm("Do you want to delete this contact?") === true) {
+    if (confirm("Do you want to remove this friend?") == true) {
       // eslint-disable-next-line no-template-curly-in-string,no-console
       console.log('Item to delete: ${docID}');
       Friends.remove(docID);

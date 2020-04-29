@@ -1,10 +1,10 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Card, Container, Header } from 'semantic-ui-react';
+import { Loader, Card, Container, Image, Rating, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Friends } from '../../api/stuff/Friends';
-import FriendComp from '../components/FriendComp';
+// import FriendComp from '../components/FriendComp';
 
 /** Renders a table containing all of the friends documents. */
 class Pending extends React.Component {
@@ -18,14 +18,23 @@ class Pending extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h2" textAlign='center' inverted>
-            Friends List
-          </Header>
           <Card.Group itemsPerRow={3}>
-            {this.props.friends.map((friend, index) => <FriendComp
-                key={index}
-                friend={friend}/>)}
+            <Card>
+              <Card.Content>
+                <Image src='http://getdrawings.com/free-icon/business-woman-icon-74.png'/>
+                <Card.Header>Aubrie Usui</Card.Header>
+                <Card.Meta>Computer Science</Card.Meta>
+              </Card.Content>
+              <Card.Content extra>
+                <Rating icon='star' defaultRating={3} maxRating={5} />
+              </Card.Content>
+              <Card.Content extra>
+                <Button onClick={() => this.removeItem(this.props.friends._id)}>
+                  Remove Friend
+                </Button>
+              </Card.Content>
             <Card.Description>Still Pending...</Card.Description>
+            </Card>
           </Card.Group>
         </Container>
     );

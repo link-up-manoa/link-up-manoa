@@ -12,6 +12,7 @@ const FriendsSchema = new SimpleSchema({
   major: String,
   image: String,
   owner: String,
+  User: String,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
