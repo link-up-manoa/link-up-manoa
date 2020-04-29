@@ -5,7 +5,7 @@
     { "email": "taylor@foo.com", "password": "changeme" },
     { "email": "jatin@foo.com", "password": "changeme" },
     { "email": "kameron@foo.com", "password": "changeme" },
-    { "email": "aubrie@foo.com", "password": "changeme" }
+    { "email": "aubrie@foo.com", "password": "changeme" },
     {
       "email": "admin@foo.com",
       "password": "changeme",
