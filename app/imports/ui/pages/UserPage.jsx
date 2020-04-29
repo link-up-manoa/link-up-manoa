@@ -56,7 +56,7 @@ class UserPage extends React.Component {
                     </Grid.Column>
                     <Grid.Column>
                       <Button icon labelPosition='left' as={NavLink} activeClassName="active"
-                              exact to="/editUser" key='editUser'>
+                              exact to={`/editUser/${this.props.user[0]._id}`} key='editUser'>
                         <Icon name='edit' />
                         Edit User
                       </Button>
