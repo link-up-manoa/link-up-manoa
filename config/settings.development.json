@@ -63,5 +63,12 @@
       "image":  "http://getdrawings.com/free-icon/business-woman-icon-74.png",
       "owner": "john@foo.com"
     }
+  ],
+
+  "defaultSession": [
+    {"username": "johnfoo", "time":  300, "date":  "05/02/2020 03:30 PM", "place": "Hamilton Library",
+      "members": "Jatin, Kameron, Taylor, Aubrie", "topic": "Back-end", "questions": "What materials do we need?",
+      "owner": "john@foo.com"
+    }
   ]
 }

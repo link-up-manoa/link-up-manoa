@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import FriendsPage from '../pages/FriendsPage';
+import Calendar from '../pages/Calendar';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import UserAdminPage from '../pages/UserAdminPage';
 import UserPage from '../pages/UserPage';
@@ -37,6 +38,7 @@ class App extends React.Component {
               <ProtectedRoute path="/userpage" component={UserPage}/>
               <ProtectedRoute path="/create" component={CreateStudySession}/>
               <ProtectedRoute path="/friends" component={FriendsPage}/>
+              <ProtectedRoute path="/remind" component={Calendar}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/addClass" component={AddClass}/>
               <ProtectedRoute path="/editUser/:_id" component={EditUser}/>
