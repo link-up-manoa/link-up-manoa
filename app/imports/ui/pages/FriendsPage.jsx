@@ -17,7 +17,6 @@ class FriendsPage extends React.Component {
           <Header as="h2" textAlign="center">Your Friends</Header>
           <Grid.Row>
             <Grid.Column width={5}>
-<<<<<<< HEAD
           <Table fixed basic='very' celled collapsing>
             <Table.Header>
               <Table.Row>
@@ -80,7 +79,6 @@ class FriendsPage extends React.Component {
               </Table.Row>
             </Table.Body>
           </Table>
-=======
               <Table fixed basic='very' celled collapsing>
                 <Table.Header>
                   <Table.Row>
@@ -143,7 +141,6 @@ class FriendsPage extends React.Component {
                   </Table.Row>
                 </Table.Body>
               </Table>
->>>>>>> issue-3
             </Grid.Column>
 
             <Grid.Column width={11}>

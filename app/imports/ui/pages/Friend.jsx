@@ -1,17 +1,13 @@
 import React from 'react';
-<<<<<<< HEAD
-import { Card, Image, Rating, Button } from 'semantic-ui-react';
-=======
-import { Meteor } from 'meteor/meteor';
-import { Loader, Card, Header, Container } from 'semantic-ui-react';
-import { withTracker } from 'meteor/react-meteor-data';
+import { Card, Image, Rating, Button, Container } from 'semantic-ui-react';
+// import { Meteor } from 'meteor/meteor';
+// import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
->>>>>>> issue-3
 import { Friends } from '../../api/stuff/Friends';
 
-removeItem(docID) {
+function removeItem(docID) {
   /* eslint-disable-next-line */
-  if (confirm("Do you want to remove this friend?") == true) {
+  if (confirm("Do you want to delete this contact?") == true) {
     // eslint-disable-next-line no-template-curly-in-string
     console.log('Item to delete: ${docID}');
     Friends.remove(docID);
@@ -62,104 +58,57 @@ class Friend extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (
-<<<<<<< HEAD
-      <Card.Group doubling itemsPerRow={3}>
-        {/*<Card key={newList.firstName}>*/}
-        {/*  <Image src={newList.image}/>*/}
-        {/*  <Card.Content>*/}
-        {/*    <Fragment>*/}
-        {/*      <Card.Header>{newList.firstName} {newList.lastName}</Card.Header>*/}
-        {/*      <Card.Meta>{newList.major}</Card.Meta>*/}
-        {/*    </Fragment>*/}
-        {/*  </Card.Content>*/}
+        // <Card key={newList.firstName}>
+    //  <Image src={newList.image}/>
+    //  <Card.Content>
+    //    <Fragment>
+    //      <Card.Header>{newList.firstName} {newList.lastName}</Card.Header>
+    //      <Card.Meta>{newList.major}</Card.Meta>
+    //    </Fragment>
+    //  </Card.Content>
+    //  <Card.Content extra>
+    //    <Rating icon='star' defaultRating={3} maxRating={5} />
+    //  </Card.Content>
+    // </Card>
+        <Card.Group>
+    <Card>
+      <Card.Content>
+        <Image src='https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png'/>
+        <Card.Header>Jatin Pandya</Card.Header>
+        <Card.Meta>Computer Science</Card.Meta>
+      </Card.Content>
+      <Card.Content extra>
+        <Rating icon='star' defaultRating={3} maxRating={5}/>
+      </Card.Content>
+      <Card.Content extra>
+        <Button onClick={() => this.removeItem(this.props.friends._id)}>
+          Remove Friend
+        </Button>
+      </Card.Content>
+    </Card>
 
-        {/*  <Card.Content extra>*/}
-        {/*    <Rating icon='star' defaultRating={3} maxRating={5} />*/}
-        {/*  </Card.Content>*/}
-        {/*</Card>*/}
-        <Card>
-          <Card.Content>
-            <Image src='https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png'/>
-            <Card.Header>Jatin Pandya</Card.Header>
-            <Card.Meta>Computer Science</Card.Meta>
-          </Card.Content>
-          <Card.Content extra>
-            <Rating icon='star' defaultRating={3} maxRating={5} />
-          </Card.Content>
-          <Card.Content extra>
-            <Button onClick={() => this.removeItem(this.props.friend._id)}>
-              Remove Friend
-            </Button>
-          </Card.Content>
-        </Card>
-
-        <Card>
-          <Card.Content>
-            <Image src='https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png'/>
-            <Card.Header>Kameron Wong</Card.Header>
-            <Card.Meta>Computer Science</Card.Meta>
-          </Card.Content>
-          <Card.Content extra>
-            <Rating icon='star' defaultRating={3} maxRating={5} />
-          </Card.Content>
-          <Card.Content extra>
-            <Button onClick={() => this.removeItem(this.props.friend._id)}>
-              Remove Friend
-            </Button>
-          </Card.Content>
-        </Card>
-
-        <Card>
-          <Card.Content>
-            <Image src='http://getdrawings.com/free-icon/business-woman-icon-74.png'/>
-            <Card.Header>Taylor Gabatino</Card.Header>
-            <Card.Meta>Computer Science</Card.Meta>
-          </Card.Content>
-          <Card.Content extra>
-            <Rating icon='star' defaultRating={3} maxRating={5} />
-          </Card.Content>
-          <Card.Content extra>
-            <Button onClick={() => this.removeItem(this.props.friend._id)}>
-              Remove Friend
-            </Button>
-          </Card.Content>
-        </Card>
-
-        <Card>
-          <Card.Content>
-            <Image src='http://getdrawings.com/free-icon/business-woman-icon-74.png'/>
-            <Card.Header>Aubrie Usui</Card.Header>
-            <Card.Meta>Computer Science</Card.Meta>
-          </Card.Content>
-          <Card.Content extra>
-              <Rating icon='star' defaultRating={3} maxRating={5} />
-          </Card.Content>
-          <Card.Content extra>
-            <Button onClick={() => this.removeItem(this.props.friend._id)}>
-              Remove Friend
-            </Button>
-          </Card.Content>
-        </Card>
-      </Card.Group>
-    )
-=======
-        <Container>
-          <Header as="h2" textAlign='center' inverted>
-            Friends List
-          </Header>
-          <Card.Group itemsPerRow={3}>
-            {this.props.friends.map((friend, index) => <FriendComp
-              key={index}
-              friend={friend}/>)}
-          </Card.Group>
-        </Container>
-    );
->>>>>>> issue-3
+    <Card>
+    <Card.Content>
+    <Image src='https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png'/>
+        <Card.Header>Kameron Wong</Card.Header>
+    <Card.Meta>Computer Science</Card.Meta>
+    </Card.Content>
+    <Card.Content extra>
+      <Rating icon='star' defaultRating={3} maxRating={5}/>
+    </Card.Content>
+    <Card.Content extra>
+    <Button onClick={() => this.removeItem(this.props.friends._id)}>
+    Remove Friend
+    </Button>
+  </Card.Content>
+  </Card>
+        </Card.Group>
+  ;
   }
 }
 
 Friend.propTypes = {
-  friend: PropTypes.object.isRequired,
+  friends: PropTypes.object.isRequired,
 };
 
 export default Friend;

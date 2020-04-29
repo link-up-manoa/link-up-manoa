@@ -4,7 +4,6 @@ import { Users } from '../../api/user/User.js';
 import { Friends } from '../../api/stuff/Friends.js';
 import { Sessions } from '../../api/session/Session';
 
->>>>>>> issue-3
 /* eslint-disable no-console */
 /** Initialize the database with a default data document. */
 function addData(data) {
