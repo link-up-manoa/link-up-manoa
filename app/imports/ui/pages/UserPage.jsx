@@ -40,7 +40,8 @@ class UserPage extends React.Component {
                   Classes Currently In:
                   <ul>
                     {this.props.classes.filter(obj => obj.status.includes('Currently-Taking')).map(
-                        (obj, index) => (<li key={index}>{obj.classAlpha} {obj.classNum}</li>))}
+                        (obj, index) => (<li key={index}>{obj.classAlpha} {obj.classNum}</li>),
+                    )}
                   </ul>
                 </Card.Description>
               </Card.Content>

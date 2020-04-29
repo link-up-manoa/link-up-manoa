@@ -1,7 +1,11 @@
 {
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "john@foo.com", "password": "changeme" },
+    { "email": "taylor@foo.com", "password": "changeme" },
+    { "email": "jatin@foo.com", "password": "changeme" },
+    { "email": "kameron@foo.com", "password": "changeme" },
+    { "email": "aubrie@foo.com", "password": "changeme" }
   ],
 
   "defaultData": [
@@ -10,9 +14,36 @@
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
+
   "defaultUsers": [
     { "firstName": "John", "lastName": "Foo", "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
-      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science","owner": "john@foo.com"}
+      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science","owner": "john@foo.com"
+    },
+    { "firstName":  "Taylor", "lastName":  "Gabatino",
+      "image": "http://getdrawings.com/free-icon/business-woman-icon-74.png",
+      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science",
+      "owner": "taylor@foo.com"
+    },
+    { "firstName":  "Jatin", "lastName":  "Pandya",
+      "image":  "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
+      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science",
+      "owner": "jatin@foo.com"
+    },
+    { "firstName":  "Kameron", "lastName":  "Wong",
+      "image":  "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
+      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science",
+      "owner": "kameron@foo.com"
+    },
+    { "firstName":  "Aubrie", "lastName":  "Usui",
+      "image":  "http://getdrawings.com/free-icon/business-woman-icon-74.png",
+      "rating": "Sensei", "status":"UG-Student", "dType":"BS", "mType":"Computer Science",
+      "owner": "aubrie@foo.com"
+    },
+    { "firstName":  "Admin", "lastName":  "Foo",
+      "image":  "http://getdrawings.com/free-icon/business-woman-icon-74.png",
+      "rating": "Advisor", "status":"Advisor", "dType":"PhD", "mType":"Computer Science",
+      "owner": "admin@foo.com"
+    }
     ],
 
   "defaultFriends": [

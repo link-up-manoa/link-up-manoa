@@ -30,6 +30,12 @@ Meteor.publish('User', function publish() {
   }
   return this.ready();
 });
+Meteor.publish('UserAdmin', function publish() {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Users.find();
+  }
+  return this.ready();
+});
 
 Meteor.publish('Friends', function publish() {
   if (this.userId) {
@@ -44,6 +50,13 @@ Meteor.publish('Classes', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Classes.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish('ClassAdmin', function publish() {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Classes.find();
   }
   return this.ready();
 });

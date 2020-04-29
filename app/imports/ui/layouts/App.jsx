@@ -10,6 +10,7 @@ import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import FriendsPage from '../pages/FriendsPage';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
+import UserAdminPage from '../pages/UserAdminPage';
 import UserPage from '../pages/UserPage';
 import AddStuff from '../pages/AddStuff';
 import AddClass from '../pages/AddClass';
@@ -40,7 +41,8 @@ class App extends React.Component {
               <ProtectedRoute path="/addClass" component={AddClass}/>
               <ProtectedRoute path="/editUser/:_id" component={EditUser}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
-              <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+              {/*<AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>*/}
+              <AdminProtectedRoute path="/admin" component={UserAdminPage}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
