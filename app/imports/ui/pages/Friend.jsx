@@ -1,5 +1,12 @@
 import React from 'react';
+<<<<<<< HEAD
 import { Card, Image, Rating, Button } from 'semantic-ui-react';
+=======
+import { Meteor } from 'meteor/meteor';
+import { Loader, Card, Header, Container } from 'semantic-ui-react';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+>>>>>>> issue-3
 import { Friends } from '../../api/stuff/Friends';
 
 removeItem(docID) {
@@ -55,6 +62,7 @@ class Friend extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (
+<<<<<<< HEAD
       <Card.Group doubling itemsPerRow={3}>
         {/*<Card key={newList.firstName}>*/}
         {/*  <Image src={newList.image}/>*/}
@@ -134,6 +142,19 @@ class Friend extends React.Component {
         </Card>
       </Card.Group>
     )
+=======
+        <Container>
+          <Header as="h2" textAlign='center' inverted>
+            Friends List
+          </Header>
+          <Card.Group itemsPerRow={3}>
+            {this.props.friends.map((friend, index) => <FriendComp
+              key={index}
+              friend={friend}/>)}
+          </Card.Group>
+        </Container>
+    );
+>>>>>>> issue-3
   }
 }
 
