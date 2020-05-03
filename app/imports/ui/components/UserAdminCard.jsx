@@ -7,8 +7,8 @@ import swal from 'sweetalert';
 class UserAdminCard extends React.Component {
   removeUser(docID) {
     swal({
-      title: 'Do you really want to delete this contact?',
-      text: 'You will not be able to recover this Contact!',
+      title: 'Do you really want to delete this User?',
+      text: 'You will not be able to recover this User!',
       type: 'warning',
       buttons: true,
       dangerMode: true,

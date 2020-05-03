@@ -3,16 +3,8 @@ import { Card, Image, Rating, Button, Container } from 'semantic-ui-react';
 // import { Meteor } from 'meteor/meteor';
 // import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 import { Friends } from '../../api/stuff/Friends';
-
-function removeItem(docID) {
-  /* eslint-disable-next-line */
-  if (confirm("Do you want to delete this contact?") == true) {
-    // eslint-disable-next-line no-template-curly-in-string
-    console.log('Item to delete: ${docID}');
-    Friends.remove(docID);
-  }
-}
 
 //
 // const defaultFriends = [
@@ -51,9 +43,26 @@ function removeItem(docID) {
 // ]
 
 /** Renders a table containing all of the friends documents. */
-class Friend extends React.Component {
+class FriendView extends React.Component {
 // const newList;
 //   newList = {_.filter(defaultFriends, function(user){return user === 'friends'})};
+  removeItem(docID) {
+    swal({
+      title: 'Do you really want to delete this Friend?',
+      text: 'You will not be able to recover this Friend!',
+      type: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((isConfirm) => {
+      if (isConfirm) {
+        swal('Deleted!', 'Your Friend has been deleted.',
+            'success').then(Friends.remove(docID));
+      } else {
+        swal('Cancelled', 'User has not been deleted', 'error');
+      }
+    });
+  }
+
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -103,12 +112,12 @@ class Friend extends React.Component {
   </Card.Content>
   </Card>
         </Card.Group>
-  ;
+    );
   }
 }
 
-Friend.propTypes = {
+FriendView.propTypes = {
   friends: PropTypes.object.isRequired,
 };
 
-export default Friend;
+export default FriendView;

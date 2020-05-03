@@ -1,17 +1,31 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { NavLink } from 'react-router-dom';
-import { Table, Header, Loader, Grid, Icon, Menu, Input, Button } from 'semantic-ui-react';
+import { Table, Header, Tab, Grid, Icon, Input, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Friends } from '../../api/stuff/Friends';
-import { FriendComp } from '../components/FriendComp';
+import FriendView from './FriendView';
 
 /** Renders a table containing all of the friends documents. */
 class FriendsPage extends React.Component {
   state = { activeItem: 'friends' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  panes = [
+    {
+      menuItem: 'View Friends',
+      render: () => <Tab.Pane attached={false}><FriendView/></Tab.Pane>,
+    },
+    {
+      menuItem: 'Tab 2',
+      render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
+    },
+    {
+      menuItem: 'Tab 3',
+      render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
+    },
+  ];
 
 /** create local variables that tells who are these friends , how to calculate and retrieve who are the friends, pending, and requeting friends
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -86,12 +100,7 @@ class FriendsPage extends React.Component {
             </Grid.Column>
 
             <Grid.Column width={11}>
-              <Menu pointing>
-                <Menu.Item as={NavLink} activeClassName="" exact to="/"/>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/friends/fri" key='fri'>Friends</Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/friends/pend" key='pend'>Pending</Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/friends/req" key='req'>Requests</Menu.Item>
-              </Menu>
+              <Tab menu={{ pointing: true }} panes={this.panes} />
             </Grid.Column>
           </Grid.Row>
 

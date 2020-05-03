@@ -22,6 +22,7 @@ import Signout from '../pages/Signout';
 import CreateStudySession from '../pages/CreateStudySession';
 import EditUser from '../pages/EditUser';
 import LevelUp from '../pages/LevelUp';
+import Friend from '../pages/FriendView';
 
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -40,6 +41,7 @@ class App extends React.Component {
               <ProtectedRoute path="/create" component={CreateStudySession}/>
               <ProtectedRoute path="/levelup" component={LevelUp}/>
               <ProtectedRoute path="/friends" component={FriendsPage}/>
+              <ProtectedRoute path="/friends/fri" component={Friend}/>
               <ProtectedRoute path="/remind" component={Calendar}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/addClass" component={AddClass}/>
