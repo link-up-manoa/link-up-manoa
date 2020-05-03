@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Segment, Header, Loader } from 'semantic-ui-react';
+import { Grid, Segment, Header, Loader, Form } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
@@ -41,7 +41,7 @@ class EditUser extends React.Component {
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
-  render() {
+  renderPage() {
     let fRef = null;
     return (
         <Grid container centered>
@@ -50,11 +50,11 @@ class EditUser extends React.Component {
             <AutoForm ref={ref => { fRef = ref; }} schema={UserSchema} onSubmit={data => this.submit(data, fRef)}
                       model={this.props.doc} >
               <Segment>
-                <TextField name='firstName'/>
-                <TextField name='lastName'/>
-                <SelectField name='status'/>
-                <SelectField name='dType'/>
-                <TextField name='mType'/>
+                <TextField name='firstName' label="First Name"/>
+                <TextField name='lastName' label="Last Name"/>
+                <SelectField name='status' label="Student Status"/>
+                <SelectField name='dType' label="Degree Type"/>
+                <TextField name='mType' label="Major"/>
                 <TextField name='image'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>

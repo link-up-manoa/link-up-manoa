@@ -25,7 +25,8 @@ class UserAdminPage extends React.Component {
               {this.props.users.map((user, index) => <UserAdminCard key={index} user={user}
                                                                     classes={this.props.classes.filter(obj => obj.owner
                                                                         .includes(user.owner))}
-                                                                    style={'padding: 25px !important;'}/>)}
+                                                                    Users={Users}
+                                                                    />)}
             </Card.Group>
         </Container>
     );

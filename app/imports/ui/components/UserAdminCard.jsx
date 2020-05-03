@@ -1,12 +1,29 @@
 import { Button, Card, Icon, Image } from 'semantic-ui-react';
 import React from 'react';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserAdminCard extends React.Component {
+  removeUser(docID) {
+    swal({
+      title: 'Do you really want to delete this contact?',
+      text: 'You will not be able to recover this Contact!',
+      type: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((isConfirm) => {
+      if (isConfirm) {
+        swal('Deleted!', 'User has been deleted.',
+            'success').then(this.props.Users.remove(docID));
+      } else {
+        swal('Cancelled', 'User has not been deleted', 'error');
+      }
+    });
+  }
+
   render() {
     return (
-        <Card.Group>
           <Card centered>
             <Image src={this.props.user.image} wrapped ui={false} />
             <Card.Content>
@@ -32,13 +49,12 @@ class UserAdminCard extends React.Component {
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button red icon labelPosition='left'>
+              <Button icon labelPosition='left' color={'red'} onClick={() => this.removeUser(this.props.user._id)}>
                 <Icon name='trash' />
                 Delete
               </Button>
             </Card.Content>
           </Card>
-        </Card.Group>
     );
   }
 }
@@ -46,6 +62,7 @@ class UserAdminCard extends React.Component {
 /** Require a document to be passed to this component. */
 UserAdminCard.propTypes = {
   user: PropTypes.object.isRequired,
+  Users: PropTypes.object.isRequired,
   classes: PropTypes.array.isRequired,
 };
 
