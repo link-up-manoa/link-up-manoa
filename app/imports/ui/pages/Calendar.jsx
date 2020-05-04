@@ -27,33 +27,6 @@ class Calendar extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-        // <Grid container columns={1} celled='internally'>
-        //   <Grid.Row>
-        //     <Grid.Column>
-        //         <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
-        //           <Card.Group>
-        //           {this.props.sessions.map((sesh, index) => <Study
-        //               key={index}
-        //               sesh={sesh}
-        //               notes={this.props.notes.filter(note => (note.contactId === sesh._id))}/>)}
-        //         </Card.Group>
-        //     </Grid.Column>
-        //   </Grid.Row>
-        //
-        //    <Grid.Row>
-        //     <Grid.Column>
-        //       <Header as="h2" textAlign="center" inverted>Reminders!</Header>
-        //       <Container>
-        //       <Checkbox inverted="true" label='Create study guide of chapter 3'/>
-        //       <br/>
-        //       <Checkbox inverted="true" label='Bring calculator'/>
-        //       <br/>
-        //       <Checkbox inverted="true" label='Make diagram for project'/>
-        //       <br/>
-        //       </Container>
-        //     </Grid.Column>
-        //    </Grid.Row>
-        // </Grid>
         <Grid container columns={1} celled='internally'>
           <Grid.Row>
             <Grid.Column>
@@ -61,12 +34,12 @@ class Calendar extends React.Component {
         <Card.Group>
           <Card>
             <Card.Content>
-              <Card.Header>{defaultSession.topic}</Card.Header>
-              <Card.Meta>{defaultSession.date}</Card.Meta>
+              <Card.Header>Back-end</Card.Header>
+              <Card.Meta>05/02/2020 4:00 PM</Card.Meta>
               <Card.Description>
-                Location: {defaultSession.place}
+                Location: Hamilton Library
                 <br/>
-                Members: {defaultSession.members}
+                Members: Jatin, Kameron, Taylor, Aubrie
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
@@ -115,7 +88,6 @@ class Calendar extends React.Component {
               </Container>
           </Grid.Column>
         </Grid.Row>
-
         </Grid>
     );
   }
