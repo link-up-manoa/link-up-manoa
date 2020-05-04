@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Card } from 'semantic-ui-react';
+import { Loader, Card, Container, Header } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Friends } from '../../api/stuff/Friends';
@@ -17,12 +17,17 @@ class Pending extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-         <Card.Group itemsPerRow={3}>
+        <Container>
+          <Header as="h2" textAlign='center' inverted>
+            Friends List
+          </Header>
+          <Card.Group itemsPerRow={3}>
             {this.props.friends.map((friend, index) => <FriendComp
                 key={index}
                 friend={friend}/>)}
-                <Card.Description>Still Pending...</Card.Description>
-         </Card.Group>
+            <Card.Description>Still Pending...</Card.Description>
+          </Card.Group>
+        </Container>
     );
   }
 }

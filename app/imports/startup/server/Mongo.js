@@ -3,7 +3,7 @@ import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
 import { Friends } from '../../api/stuff/Friends.js';
 import { Reminders } from '../../api/stuff/Reminders.js';
-
+import { Sessions } from '../../api/session/Session';
 /* eslint-disable no-console */
 
 /** Initialize the database with a default data document. */
@@ -33,9 +33,10 @@ if (Users.find().count() === 0) {
     Meteor.settings.defaultUsers.map(data => addUser(data));
   }
 }
+
 /** Initialize the database with a default friends document. */
 function addFriend(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
+  console.log(`  Adding: ${data.firstName} ${data.lastName} (${data.owner})`);
   Friends.insert(data);
 }
 
@@ -44,13 +45,12 @@ if (Friends.find().count() === 0) {
   if (Meteor.settings.defaultFriends) {
     console.log('Creating friend data');
     Meteor.settings.defaultFriends.map(data => addFriend(data));
-
   }
 }
 
 /** Initialize the database with a default friends document. */
 function addReminder(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
+  console.log(`  Adding: ${data.firstName} (${data.owner})`);
   Reminders.insert(data);
 }
 
@@ -59,6 +59,18 @@ if (Reminders.find().count() === 0) {
   if (Meteor.settings.defaultReminders) {
     console.log('Creating friend data');
     Meteor.settings.defaultReminders.map(data => addReminder(data));
+  }
+}
 
+function addSession(data) {
+  console.log(`  Adding: ${data.topic} (${data.owner})`);
+  Sessions.insert(data);
+}
+
+/** Initialize the collection if empty. */
+if (Sessions.find().count() === 0) {
+  if (Meteor.settings.defaultSession) {
+    console.log('Creating Session');
+    Meteor.settings.defaultSession.map(data => addSession(data));
   }
 }
