@@ -9,6 +9,7 @@ import { Notes } from '../../api/note/Notes';
 // import { Card } from 'semantic-ui-react';
 import Note from '../components/Note';
 import AddNote from '../components/AddNote';
+import ReminderList from '../components/ReminderList';
 
 
 const defaultSession = [
@@ -27,33 +28,6 @@ class Calendar extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-        // <Grid container columns={1} celled='internally'>
-        //   <Grid.Row>
-        //     <Grid.Column>
-        //         <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
-        //           <Card.Group>
-        //           {this.props.sessions.map((sesh, index) => <Study
-        //               key={index}
-        //               sesh={sesh}
-        //               notes={this.props.notes.filter(note => (note.contactId === sesh._id))}/>)}
-        //         </Card.Group>
-        //     </Grid.Column>
-        //   </Grid.Row>
-        //
-        //    <Grid.Row>
-        //     <Grid.Column>
-        //       <Header as="h2" textAlign="center" inverted>Reminders!</Header>
-        //       <Container>
-        //       <Checkbox inverted="true" label='Create study guide of chapter 3'/>
-        //       <br/>
-        //       <Checkbox inverted="true" label='Bring calculator'/>
-        //       <br/>
-        //       <Checkbox inverted="true" label='Make diagram for project'/>
-        //       <br/>
-        //       </Container>
-        //     </Grid.Column>
-        //    </Grid.Row>
-        // </Grid>
         <Grid container columns={1} celled='internally'>
           <Grid.Row>
             <Grid.Column>
@@ -103,17 +77,18 @@ class Calendar extends React.Component {
           </Grid.Row>
 
         <Grid.Row>
-          <Grid.Column>
-            <Header as="h2" textAlign="center" inverted>Reminders</Header>
-            <Container>
-              <Checkbox inverted="true" label='Create study guide of chapter 3'/>
-              <br/>
-              <Checkbox inverted="true" label='Bring calculator'/>
-              <br/>
-              <Checkbox inverted="true" label='Make diagram for project'/>
-              <br/>
-              </Container>
-          </Grid.Column>
+          {/* <Grid.Column> */}
+          {/*  <Header as="h2" textAlign="center" inverted>Reminders</Header> */}
+          {/*  <Container> */}
+          {/*    <Checkbox inverted="true" label='Create study guide of chapter 3'/> */}
+          {/*    <br/> */}
+          {/*    <Checkbox inverted="true" label='Bring calculator'/> */}
+          {/*    <br/> */}
+          {/*    <Checkbox inverted="true" label='Make diagram for project'/> */}
+          {/*    <br/> */}
+          {/*    </Container> */}
+          {/* </Grid.Column> */}
+          <ReminderList/>
         </Grid.Row>
 
         </Grid>

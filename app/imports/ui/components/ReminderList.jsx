@@ -67,6 +67,7 @@ class ReminderList extends Component {
             <form className="new-reminder" onSubmit={this.handleSubmit.bind(this)} >
               <input
                   type="text"
+                  /* eslint-disable-next-line react/no-string-refs */
                   ref="textInput"
                   placeholder="Type to add new reminders"
               />
@@ -86,9 +87,7 @@ ReminderList.propTypes = {
   reminders: PropTypes.array.isRequired,
 };
 
-export default withTracker(() => {
-  return {
+export default withTracker(() => ({
     reminders: Reminders.find({}, { sort: { createdAt: -1 } }).fetch(),
     incompleteCount: Reminders.find({ checked: { $ne: true } }).count(),
-  };
-}) (ReminderList);
+  }))(ReminderList);
