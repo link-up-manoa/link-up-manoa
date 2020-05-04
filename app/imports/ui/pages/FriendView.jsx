@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Image, Rating, Button, Container } from 'semantic-ui-react';
-// import { Meteor } from 'meteor/meteor';
-// import { withTracker } from 'meteor/react-meteor-data';
+import { Card, Image, Rating, Button } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { Friends } from '../../api/stuff/Friends';
@@ -90,7 +90,7 @@ class FriendView extends React.Component {
         <Rating icon='star' defaultRating={3} maxRating={5}/>
       </Card.Content>
       <Card.Content extra>
-        <Button onClick={() => this.removeItem(this.props.friends._id)}>
+        <Button onClick={() => this.removeItem(this.props.friend._id)}>
           Remove Friend
         </Button>
       </Card.Content>
@@ -106,7 +106,7 @@ class FriendView extends React.Component {
       <Rating icon='star' defaultRating={3} maxRating={5}/>
     </Card.Content>
     <Card.Content extra>
-    <Button onClick={() => this.removeItem(this.props.friends._id)}>
+    <Button onClick={() => this.removeItem(this.props.friend._id)}>
     Remove Friend
     </Button>
   </Card.Content>
@@ -117,7 +117,15 @@ class FriendView extends React.Component {
 }
 
 FriendView.propTypes = {
-  friends: PropTypes.object.isRequired,
+  friend: PropTypes.object.isRequired,
 };
 
-export default FriendView;
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Get access to Stuff documents.
+  const subscription = Meteor.subscribe('Friends');
+  return {
+    friends: Friends.find({}).fetch(),
+    ready: subscription.ready(),
+  };
+})(FriendView);

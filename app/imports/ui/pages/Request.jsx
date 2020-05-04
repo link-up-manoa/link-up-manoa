@@ -17,23 +17,17 @@ class Request extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-        <Container>
-          <Card.Group itemsPerRow={3}>
-            <Card>
-              <Card.Content>
-                <Image src='http://getdrawings.com/free-icon/business-woman-icon-74.png'/>
-                <Card.Header>Taylor Gabatino</Card.Header>
-                <Card.Meta>Computer Science</Card.Meta>
-              </Card.Content>
-              <Card.Content extra>
-                <Rating icon='star' defaultRating={3} maxRating={5} />
-              </Card.Content>
-              <Card.Content extra>
-                <Button onClick={() => this.removeItem(this.props.friends._id)}>
-                  Remove Friend
-                </Button>
-              </Card.Content>
-            <Card.Description>{this.props.friends.firstName} wants to be friends with you!</Card.Description>
+        <Card.Group>
+          <Card>
+            <Card.Content>
+              <Image src='http://getdrawings.com/free-icon/business-woman-icon-74.png'/>
+              <Card.Header>Aubrie Usui</Card.Header>
+              <Card.Meta>Computer Science</Card.Meta>
+              <Card.Description>This person wants to be friends with you!</Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+              <Rating icon='star' defaultRating={3} maxRating={5}/>
+            </Card.Content>
             <Card.Content extra>
               <div className='ui two buttons'>
                 <Button basic color='green'>
@@ -44,9 +38,8 @@ class Request extends React.Component {
                 </Button>
               </div>
             </Card.Content>
-            </Card>
-          </Card.Group>
-        </Container>
+          </Card>
+        </Card.Group>
     );
   }
 }
