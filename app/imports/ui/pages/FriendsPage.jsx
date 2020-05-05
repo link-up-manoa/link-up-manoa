@@ -5,7 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Friends } from '../../api/stuff/Friends';
 import FriendView from './FriendView';
-import Pending from './Pending';
+// import Pending from './Pending';
 import Request from './Request';
 
 /** Renders a table containing all of the friends documents. */
@@ -18,10 +18,6 @@ class FriendsPage extends React.Component {
     {
       menuItem: 'View Friends',
       render: () => <Tab.Pane attached={false}><FriendView/></Tab.Pane>,
-    },
-    {
-      menuItem: 'Pending Friends',
-      render: () => <Tab.Pane attached={false}><Pending/></Tab.Pane>,
     },
     {
       menuItem: 'Requests',

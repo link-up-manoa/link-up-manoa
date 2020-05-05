@@ -19,15 +19,27 @@ class Request extends React.Component {
     return (
         <List>
           <div className="clearfix">
-            <a href="">
+            <a>
               <Image size='tiny' src='http://getdrawings.com/free-icon/business-woman-icon-74.png' circular/>
               <span>Aubrie Usui</span>
-              <Button.Group className="buttonRequest" floated='right'>
+              <Button.Group floated='right'>
                 <Button color='green' name="actions[accept]" type="submit" onClick="myRequests()">
                   Accept
                 </Button>
                 <Button.Or/>
                 <Button color='red' name="actions[reject]" type="submit" onClick="myRequests()">
+                  Decline
+                </Button>
+              </Button.Group>
+            </a>
+            <a>
+              <Image size='tiny' src='' circular/>
+              <span>Taylor Gabatino</span>
+              <Button.Group floated='right'>
+                <Button color='green' name='actions[accept]' type='submit' onClick="myRequests()">
+                  Accept
+                </Button>
+                <Button color='green' name='actions[reject]' type='submit' onClick="myRequests()">
                   Decline
                 </Button>
               </Button.Group>
