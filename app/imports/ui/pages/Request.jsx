@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Card, Button, Container, Image, Rating } from 'semantic-ui-react';
+import { Loader, Button, List, Image, Form } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Friends } from '../../api/stuff/Friends';
@@ -17,29 +17,23 @@ class Request extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-        <Card.Group>
-          <Card>
-            <Card.Content>
-              <Image src='http://getdrawings.com/free-icon/business-woman-icon-74.png'/>
-              <Card.Header>Aubrie Usui</Card.Header>
-              <Card.Meta>Computer Science</Card.Meta>
-              <Card.Description>This person wants to be friends with you!</Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Rating icon='star' defaultRating={3} maxRating={5}/>
-            </Card.Content>
-            <Card.Content extra>
-              <div className='ui two buttons'>
-                <Button basic color='green'>
+        <List>
+          <div className="clearfix">
+            <a href="">
+              <Image size='tiny' src='http://getdrawings.com/free-icon/business-woman-icon-74.png' circular/>
+              <span>Aubrie Usui</span>
+              <Button.Group className="buttonRequest" floated='right'>
+                <Button color='green' name="actions[accept]" type="submit" onClick="myRequests()">
                   Accept
                 </Button>
-                <Button basic color='red'>
+                <Button.Or/>
+                <Button color='red' name="actions[reject]" type="submit" onClick="myRequests()">
                   Decline
                 </Button>
-              </div>
-            </Card.Content>
-          </Card>
-        </Card.Group>
+              </Button.Group>
+            </a>
+          </div>
+        </List>
     );
   }
 }

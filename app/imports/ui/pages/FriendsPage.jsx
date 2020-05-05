@@ -29,6 +29,7 @@ class FriendsPage extends React.Component {
     },
   ];
 
+// eslint-disable-next-line max-len
 /** create local variables that tells who are these friends , how to calculate and retrieve who are the friends, pending, and requeting friends
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
