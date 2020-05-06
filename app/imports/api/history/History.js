@@ -10,9 +10,8 @@ const HistorySchema = new SimpleSchema({
   firstName: String,
   lastName: String,
   image: String,
-  rating: String,
+  rating: Number,
   studyAgain: String,
-  mType: String,
   owner: String,
 }, { tracker: Tracker });
 

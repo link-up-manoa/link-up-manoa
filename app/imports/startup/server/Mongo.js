@@ -3,6 +3,7 @@ import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
 import { Friends } from '../../api/stuff/Friends.js';
 import { Sessions } from '../../api/session/Session';
+import { History } from '../../api/history/History';
 
 /* eslint-disable no-console */
 /** Initialize the database with a default data document. */
@@ -58,6 +59,21 @@ if (Sessions.find().count() === 0) {
   if (Meteor.settings.defaultSession) {
     console.log('Creating Session');
     Meteor.settings.defaultSession.map(data => addSession(data));
+
+  }
+}
+
+/** Initialize the database with a default history document. */
+function addHistory(data) {
+  console.log(`  Adding: ${data.topic} (${data.owner})`);
+  History.insert(data);
+}
+
+/** Initialize the collection if empty. */
+if (History.find().count() === 0) {
+  if (Meteor.settings.defaultHistory) {
+    console.log('Creating History data');
+    Meteor.settings.defaultHistory.map(data => addHistory(data));
 
   }
 }

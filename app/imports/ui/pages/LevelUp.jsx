@@ -40,6 +40,7 @@ class LevelUp extends React.Component {
             <Card centered color = 'red'>
               <Reveal animated = 'move'>
                 <Reveal.Content visible>
+                  /** Change to a different image. */
               <Image src={this.props.user[0].image} wrapped ui={false} />
                 </Reveal.Content>
                 <Reveal.Content hidden>
@@ -115,9 +116,9 @@ class LevelUp extends React.Component {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <Image src={this.props.user[0].image} wrapped ui={false} />
+                  <Image src={this.props.history[0].image} wrapped ui={false} />
                 </Table.Cell>
-                <Table.Cell single line>{this.props.user[0].firstName} {this.props.user[0].lastName}</Table.Cell>
+                <Table.Cell single line>{this.props.history[0].firstName} {this.props.history[0].lastName}</Table.Cell>
                 <Table.Cell>
                   <Rating icon='star' defaultRating={3} maxRating={5} />
                 </Table.Cell>

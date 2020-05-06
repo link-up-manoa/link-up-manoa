@@ -159,5 +159,55 @@
       "mType": "Computer Science",
       "owner": "admin@foo.com"
     }
+  ],
+  "defaultHistory": [
+    {
+      "firstName": "John",
+      "lastName": "Foo",
+      "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
+      "rating": 2,
+      "studyAgain": "Yes",
+      "owner": "john@foo.com"
+    },
+    {
+      "firstName": "Taylor",
+      "lastName": "Gabatino",
+      "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
+      "rating": 2,
+      "studyAgain": "Yes",
+      "owner": "tgabatin@foo.com"
+    },
+    {
+      "firstName": "Kameron",
+      "lastName": "Wong",
+      "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
+      "rating": 2,
+      "studyAgain": "Yes",
+      "owner": "kameron@foo.com"
+    },
+    {
+      "firstName": "Jatin",
+      "lastName": "Pandya",
+      "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
+      "rating": 2,
+      "studyAgain": "Yes",
+      "owner": "jatin@foo.com"
+    },
+    {
+      "firstName": "Aubrie",
+      "lastName": "Usui",
+      "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
+      "rating": 2,
+      "studyAgain": "Yes",
+      "owner": "aubrie@foo.com"
+    },
+    {
+      "firstName": "Admin",
+      "lastName": "Foo",
+      "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
+      "rating": 2,
+      "studyAgain": "Yes",
+      "owner": "admin@foo.com"
+    }
   ]
 }

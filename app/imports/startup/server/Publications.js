@@ -6,6 +6,7 @@ import { Classes } from '../../api/class/Classes';
 import { Friends } from '../../api/stuff/Friends';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
+import { History } from '../../api/history/History';
 
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Stuff', function publish() {
@@ -56,6 +57,14 @@ Meteor.publish('Classes', function publish() {
   return this.ready();
 });
 
+Meteor.publish('History', function publish() {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return History.find({ owner: username });
+  }
+  return this.ready();
+});
+
 Meteor.publish('ClassAdmin', function publish() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Classes.find();
@@ -71,6 +80,7 @@ Meteor.publish('Session', function publish() {
   }
   return this.ready();
 });
+
 
 /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
 Meteor.publish('FriendsAdmin', function publish() {
