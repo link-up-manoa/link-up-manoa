@@ -3,11 +3,40 @@ import { Meteor } from 'meteor/meteor';
 import { Loader, Button, List, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Friends } from '../../api/stuff/Friends';
-// import FriendComp from '../components/FriendComp';
+import swal from 'sweetalert';
+import { Users } from '../../api/user/User';
 
 /** Renders a table containing all of the friends documents. */
 class Request extends React.Component {
+
+  state = { activeItem: 'friends' };
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  removeItem(docID) {
+    swal({
+      title: 'Do you really want to delete this Friend?',
+      text: 'You will not be able to recover this Friend!',
+      type: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((isConfirm) => {
+      if (isConfirm) {
+        swal('Deleted!', 'Your Friend has been deleted.',
+            'success').then(Users.remove(docID));
+      } else {
+        swal('Cancelled', 'User has not been deleted', 'error');
+      }
+    });
+  }
+
+
+  addUser(docID) {
+    console.log(`  Adding: ${docID.firstName} ${docID.lastName} (${docID.owner})`);
+    Users.assign()
+    Users.insert(docID);
+  }
+
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -36,10 +65,10 @@ class Request extends React.Component {
               <Image size='tiny' src='' circular/>
               <span>Taylor Gabatino</span>
               <Button.Group floated='right'>
-                <Button color='green' name='actions[accept]' type='submit' onClick="myRequests()">
+                <Button color='green' onClick={() => this.addUser(this.props.user._id)}>
                   Accept
                 </Button>
-                <Button color='green' name='actions[reject]' type='submit' onClick="myRequests()">
+                <Button color='red' onClick={() => this.removeItem(this.props.user._id)}>
                   Decline
                 </Button>
               </Button.Group>
@@ -52,16 +81,16 @@ class Request extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 Request.propTypes = {
-  friends: PropTypes.array.isRequired,
+  user: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Friends');
+  const subscription = Meteor.subscribe('User');
   return {
-    friends: Friends.find({}).fetch(),
+    user: Users.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(Request);

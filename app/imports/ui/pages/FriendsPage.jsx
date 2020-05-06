@@ -3,16 +3,12 @@ import { Meteor } from 'meteor/meteor';
 import { Table, Header, Tab, Grid, Icon, Input, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Friends } from '../../api/stuff/Friends';
+import { Users } from '../../api/user/User';
 import FriendView from './FriendView';
-// import Pending from './Pending';
 import Request from './Request';
 
 /** Renders a table containing all of the friends documents. */
 class FriendsPage extends React.Component {
-  state = { activeItem: 'friends' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   panes = [
     {
@@ -121,16 +117,16 @@ class FriendsPage extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 FriendsPage.propTypes = {
-  friends: PropTypes.array.isRequired,
+  user: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Friends');
+  const subscription = Meteor.subscribe('User');
   return {
-    friends: Friends.find({}).fetch(),
+    user: Users.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(FriendsPage);
