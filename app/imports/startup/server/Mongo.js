@@ -50,14 +50,14 @@ if (Friends.find().count() === 0) {
 
 /** Initialize the database with a default friends document. */
 function addReminder(data) {
-  console.log(`  Adding: ${data.firstName} (${data.owner})`);
+  console.log(`  Adding: ${data.text} (${data.owner})`);
   Reminders.insert(data);
 }
 
 /** Initialize the collection if empty. */
 if (Reminders.find().count() === 0) {
   if (Meteor.settings.defaultReminders) {
-    console.log('Creating friend data');
+    console.log('Creating default reminders');
     Meteor.settings.defaultReminders.map(data => addReminder(data));
   }
 }

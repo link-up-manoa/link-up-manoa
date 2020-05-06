@@ -35,8 +35,8 @@
   ],
 
   "defaultReminders": [
-    { "text": "Make New Study Session!", "owner":  "john@foo.com", "dateCreated": "04/20/2020" },
-    { "text": "Meet New Friends!", "owner":  "john@foo.com", "dateCreated": "04/20/2020" }
+    { "text": "Make New Study Session!", "owner":  "john@foo.com", "dateCreated": "2020/04/20", "checked": "false" },
+    { "text": "Meet New Friends!", "owner":  "john@foo.com", "dateCreated": "2020/04/20", "checked": "false" }
     ],
 
   "defaultSession": [

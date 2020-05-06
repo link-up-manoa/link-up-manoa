@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Checkbox, List } from 'semantic-ui-react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
@@ -20,14 +21,18 @@ class ReminderList extends Component {
     event.preventDefault();
 
     // Find the text field via the React ref
-    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    // eslint-disable-next-line react/no-string-refs,react/no-find-dom-node
+    const reminder = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    const today = new Date();
+    const date = today.getFullYear().toString() + '/' + today.getMonth().toString() + '/' + today.getDate().toString();
 
     Reminders.insert({
-      text,
+      text: reminder,
       owner: Meteor.user().username,
-      dateCreated: new Date(), // current time
+      dateCreated: date, // current time
+      checked: false,
     });
-
+    console.log(Reminders.find().fetch());
     // Clear form
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
@@ -43,6 +48,8 @@ class ReminderList extends Component {
     if (this.state.hideCompleted) {
       filteredReminders = filteredReminders.filter(reminder => !reminder.checked);
     }
+    console.log('renderReminders');
+    console.log(Reminders.find().fetch());
     return filteredReminders.map((reminder) => (
         <Reminder key={reminder._id} reminder={reminder} />
     ));
@@ -53,17 +60,11 @@ class ReminderList extends Component {
         <div className="reminderListContainer">
           <header>
             <h1>Reminders List</h1>
-
-            <label className="hide-completed">
-              <input
-                  type="checkbox"
-                  readOnly
-                  checked={this.state.hideCompleted}
-                  onClick={this.toggleHideCompleted.bind(this)}
-              />
-              Hide Completed Reminders
-            </label>
-
+            <Checkbox
+                label={'Hide Checked Reminders'}
+                onChange={this.toggleHideCompleted.bind(this)}
+                checked={this.state.hideCompleted}/>
+          </header>
             <form className="new-reminder" onSubmit={this.handleSubmit.bind(this)} >
               <input
                   type="text"
@@ -73,11 +74,9 @@ class ReminderList extends Component {
               />
             </form>
 
-          </header>
-
-          <ul>
+          <List divided relaxed>
             {this.renderReminders()}
-          </ul>
+          </List>
         </div>
     );
   }
@@ -87,7 +86,11 @@ ReminderList.propTypes = {
   reminders: PropTypes.array.isRequired,
 };
 
-export default withTracker(() => ({
+export default withTracker(() => {
+  const handle = Meteor.subscribe('Reminders');
+  return {
     reminders: Reminders.find({}, { sort: { createdAt: -1 } }).fetch(),
     incompleteCount: Reminders.find({ checked: { $ne: true } }).count(),
-  }))(ReminderList);
+    ready: handle.ready(),
+  };
+})(ReminderList);

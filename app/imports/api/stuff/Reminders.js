@@ -8,8 +8,9 @@ const Reminders = new Mongo.Collection('Reminders');
 /** Define a schema to specify the structure of each document in the collection. */
 const ReminderSchema = new SimpleSchema({
   text: String,
-  dateCreated: Date,
+  dateCreated: String,
   owner: String,
+  checked: Boolean,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { List, Checkbox, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { Reminders } from '../../api/stuff/Reminders';
 
@@ -17,23 +18,29 @@ export default class Reminder extends Component {
   render() {
     // Give tasks a different className when they are checked off,
     // so that we can style them nicely in CSS
-    const reminderClassName = this.props.reminder.checked ? 'checked' : '';
+    const reminderClassName = this.props.reminder.checked ? 'checked-reminder' : 'unchecked-reminder';
 
     return (
-        <li className={reminderClassName}>
-          <button className="deleteReminder" onClick={this.deleteThisReminder.bind(this)}>
-            &times;
-          </button>
-
-          <input
-              type="checkbox"
-              readOnly
-              checked={!!this.props.reminder.checked}
-              onClick={this.toggleChecked.bind(this)}
-          />
-
-          <span className="text">{this.props.reminder.text}</span>
-        </li>
+        <List.Item>
+          <Button
+              color='red'
+              className="deleteReminder"
+              onClick={this.deleteThisReminder.bind(this)}
+              size='mini'>
+            Delete
+          </Button>
+            <List.Content>
+              <List.Header className={reminderClassName}>
+                <Checkbox
+                    checked={!!this.props.reminder.checked}
+                    onChange={this.toggleChecked.bind(this)}
+                    className={'reminder-checkbox'}
+                />
+                {this.props.reminder.text}
+              </List.Header>
+              <List.Description>date created: {this.props.reminder.dateCreated}</List.Description>
+            </List.Content>
+        </List.Item>
     );
   }
 }

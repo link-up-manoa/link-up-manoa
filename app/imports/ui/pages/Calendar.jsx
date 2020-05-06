@@ -6,6 +6,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
 // import { Study } from '../components/Study';
 import { Notes } from '../../api/note/Notes';
+import { Reminders } from '../../api/stuff/Reminders';
 // import { Card } from 'semantic-ui-react';
 import Note from '../components/Note';
 import AddNote from '../components/AddNote';
@@ -88,7 +89,7 @@ class Calendar extends React.Component {
           {/*    <br/> */}
           {/*    </Container> */}
           {/* </Grid.Column> */}
-          <ReminderList/>
+          <ReminderList reminders={Reminders}/>
         </Grid.Row>
 
         </Grid>

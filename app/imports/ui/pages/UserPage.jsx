@@ -7,8 +7,6 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Users } from '../../api/user/User';
 import { Classes } from '../../api/class/Classes';
-import ReminderList from '../components/ReminderList';
-import Reminders from '../../api/stuff/Reminders';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserPage extends React.Component {
@@ -67,7 +65,6 @@ class UserPage extends React.Component {
               </Card.Content>
             </Card>
           </Card.Group>
-          <ReminderList reminders={Reminders}/>
         </Container>
     );
   }

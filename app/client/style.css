@@ -12,7 +12,7 @@
   position: relative;
 }
 
-li {
+/* li {
   position: relative;
   list-style: none;
   padding: 15px;
@@ -21,22 +21,29 @@ li {
 
 li .text {
   margin-left: 10px;
-}
+} */
 
-li.checked {
-  color: #888;
-}
-
-li.checked .text {
+.checked-reminder {
   text-decoration: line-through;
+  color: #888;
+  padding: 15px 15px 15px 0px;
+}
+
+.unchecked-reminder {
+  color: #888;
+  padding: 15px 15px 15px 0px;
+}
+
+.reminder-checkbox {
+  margin-right: 10px;
 }
 
 .reminderListContainer {
-  max-width: 600px;
-  padding: 50px, 50px, 50px, 50px;
-  margin: 0 auto;
+  padding: 50px;
+  margin: 15px;
   min-height: 100%;
   background: white;
+  min-width: 50%;
 }
 
 @media (max-width: 600px) {
