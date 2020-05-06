@@ -13,6 +13,7 @@ class Request extends React.Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
+
   removeItem(docID) {
     swal({
       title: 'Do you really want to delete this Friend?',
@@ -32,8 +33,8 @@ class Request extends React.Component {
 
 
   addUser(docID) {
-    console.log(`  Adding: ${docID.firstName} ${docID.lastName} (${docID.owner})`);
-    Users.assign()
+    Meteor.settings.defaultUsers;
+    const friend = Users.create(this.defaultUsers);
     Users.insert(docID);
   }
 
