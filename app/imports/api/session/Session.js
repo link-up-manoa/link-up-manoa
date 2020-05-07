@@ -13,6 +13,7 @@ const SessionSchema = new SimpleSchema({
   members: String,
   topic: String,
   questions: String,
+  owner: String,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

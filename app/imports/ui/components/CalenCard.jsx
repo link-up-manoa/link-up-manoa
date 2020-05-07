@@ -63,4 +63,3 @@ CalenCard.propTypes = {
   sesh: PropTypes.array.isRequired,
   notes: PropTypes.array.isRequired,
 };
-
