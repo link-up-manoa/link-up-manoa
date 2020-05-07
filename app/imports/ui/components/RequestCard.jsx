@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Users } from '../../api/user/User';
 
@@ -10,7 +9,7 @@ export class RequestCard extends React.Component {
 
   myfunc(docID) {
       this.add.setAttribute('disabled', 'disabled');
-      this.props.user.status = 'friend';
+      this.props.user.fType = 'friend';
       Users.insert(docID);
   }
 
@@ -59,4 +58,5 @@ export class RequestCard extends React.Component {
 /** Require a document to be passed to this component. */
 RequestCard.propTypes = {
   user: PropTypes.object.isRequired,
-};(RequestCard);
+}
+

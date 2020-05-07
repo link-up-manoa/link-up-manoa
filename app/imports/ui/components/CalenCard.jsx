@@ -1,14 +1,13 @@
 import React from 'react';
 import { Card, Feed, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Sessions } from '../../api/session/Session';
 import AddNote from './AddNote';
 import Note from './Note';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class CalenCard extends React.Component {
+export class CalenCard extends React.Component {
 
   removeItem(docID) {
     swal({
@@ -65,5 +64,3 @@ CalenCard.propTypes = {
   notes: PropTypes.array.isRequired,
 };
 
-/** Wrap this component in withRouter since we use the <Link> React Router element. */
-export default withRouter(CalenCard);
