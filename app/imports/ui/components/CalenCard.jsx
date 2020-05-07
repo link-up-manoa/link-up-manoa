@@ -1,13 +1,11 @@
 import React from 'react';
 import { Card, Feed, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { Meteor } from 'meteor/meteor';
 import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Sessions } from '../../api/session/Session';
 import AddNote from './AddNote';
 import Note from './Note';
-import { Notes } from '../../api/note/Notes';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class CalenCard extends React.Component {

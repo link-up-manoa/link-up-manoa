@@ -1,13 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
+import { Button, Item } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
@@ -15,9 +7,9 @@ import swal from 'sweetalert';
 import { Users } from '../../api/user/User';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-export class RequestCard extends React.Component {
+class RequestCard extends React.Component {
 
-  myfunc = docID => {
+  myfunc(docID) {
       this.add.setAttribute('disabled', 'disabled');
       this.props.users.status = 'friend';
       Users.insert(docID);
@@ -42,40 +34,26 @@ export class RequestCard extends React.Component {
 
   render() {
     return (
-        <List>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src={this.props.users.image} />
-              </ListItemAvatar>
-              <ListItemText
-                  primary="{this.props.users.firstName} {this.props.users.lastName}"
-                  secondary={
-                    <React.Fragment>
-                      <Typography
-                          component="span"
-                          variant="body2"
-                          color="textPrimary"
-                      >
-                        {this.props.users.mType}
-                      </Typography>
-                      {"{this.props.users.rating}"}
-                    </React.Fragment>
-                  }>
-              </ListItemText>
-              <ListItemSecondaryAction>
-                <Button.Group floated='right'>
-                  {/* eslint-disable-next-line max-len */}
-                  <Button color='green' type='submit' id='add' onClick={this.myfunc}>
-                    Accept
-                  </Button>
-                  <Button color='red' id='remove' onClick={() => this.removeItem(this.props.users._id)}>
-                    Decline
-                  </Button>
-                </Button.Group>
-              </ListItemSecondaryAction>
-            </ListItem>
-            <Divider variant="inset" component="li" />
-        </List>
+        <Item>
+          <Item.Image src={this.props.users.image}></Item.Image>
+          <Item.Content>
+            <Item.Header>{this.props.users.firstName} {this.props.users.lastName}</Item.Header>
+            <Item.Meta>{this.props.users.rating}</Item.Meta>
+            <Item.Description>{this.props.users.mType} -- {this.props.users.dType}</Item.Description>
+            <Item.Extra>
+              <Button.Group>
+                <Button color='green' type='submit' id='add' onClick={() => this.myfunc(this.props.users._id)}>
+                  Accept
+                </Button>
+                <Button color='red' id='remove' onClick={() => this.removeItem(this.props.users._id)}>
+                  Decline
+                </Button>
+              </Button.Group>
+            </Item.Extra>
+          </Item.Content>
+        </Item>
+
+
     );
   }
 }
