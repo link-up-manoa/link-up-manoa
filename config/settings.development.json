@@ -62,7 +62,30 @@
       "status": "UG-Student",
       "dType": "BS",
       "mType": "Computer Science",
-      "owner": "john@foo.com"
+      "owner": "john@foo.com",
+      "fType": "friend"
+    },
+    {
+      "firstName": "Danny",
+      "lastName": "Lee",
+      "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png",
+      "rating": "Sensei",
+      "status": "UG-Student",
+      "dType": "BS",
+      "mType": "Computer Science",
+      "owner": "john@foo.com",
+      "fType": "pending"
+    },
+    {
+      "firstName": "Maybel",
+      "lastName": "Atkinson",
+      "image": "http://getdrawings.com/free-icon/business-woman-icon-74.png",
+      "rating": "Sensei",
+      "status": "G-Student",
+      "dType": "BS",
+      "mType": "Computer Science",
+      "owner": "john@foo.com",
+      "fType": "pending"
     },
     {
       "firstName": "Taylor",
@@ -72,7 +95,8 @@
       "status": "UG-Student",
       "dType": "BS",
       "mType": "Computer Science",
-      "owner": "taylor@foo.com"
+      "owner": "taylor@foo.com",
+      "fType": "friend"
     },
     {
       "firstName": "Jatin",
@@ -82,7 +106,8 @@
       "status": "UG-Student",
       "dType": "BS",
       "mType": "Computer Science",
-      "owner": "jatin@foo.com"
+      "owner": "jatin@foo.com",
+      "fType": "friend"
     },
     {
       "firstName": "Kameron",
@@ -92,7 +117,8 @@
       "status": "UG-Student",
       "dType": "BS",
       "mType": "Computer Science",
-      "owner": "kameron@foo.com"
+      "owner": "kameron@foo.com",
+      "fType": "friend"
     },
     {
       "firstName": "Aubrie",
@@ -102,7 +128,8 @@
       "status": "UG-Student",
       "dType": "BS",
       "mType": "Computer Science",
-      "owner": "aubrie@foo.com"
+      "owner": "aubrie@foo.com",
+      "fType": "friend"
     },
     {
       "firstName": "Admin",
@@ -112,7 +139,8 @@
       "status": "Advisor",
       "dType": "PhD",
       "mType": "Computer Science",
-      "owner": "admin@foo.com"
+      "owner": "admin@foo.com",
+      "fType": "friend"
     }
   ],
 
@@ -123,7 +151,8 @@
       "place": "Hamilton Library",
       "members": "Jatin, Kameron, Taylor, Aubrie",
       "topic": "Back-end",
-      "questions": "None"
+      "questions": "None",
+      "owner": "john@foo.com"
     },
     {
       "username": "elb24",
@@ -131,7 +160,8 @@
       "place": "Zoom Online",
       "members": "ICS 212 class",
       "topic": "Learning C++ Language",
-      "questions": "None"
+      "questions": "None",
+      "owner": "john@foo.com"
     }
   ]
 

@@ -1,26 +1,24 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Button, List, Image } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import swal from 'sweetalert';
 import { Users } from '../../api/user/User';
+import { RequestCard } from '../components/RequestCard';
 
 /** Renders a table containing all of the friends documents. */
 class Request extends React.Component {
 
-  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
-  render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
-
   /** Render the page once subscriptions have been received. */
-  renderPage() {
-    return (
-        <Container>
-          {this.props.users.map((user) => <RequestCard key={user._id} user={user}/>)}
-        </Container>
-    );
+  // eslint-disable-next-line consistent-return
+  render() {
+    let newList = [];
+    newList = this.props.users.filter((user) => user.fType === 'pending');
+      return (
+          <Container>
+            {newList.map((user) => <RequestCard key={user._id} user={user}/>)}
+          </Container>
+      );
   }
 }
 
@@ -35,7 +33,7 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('User');
   return {
-    user: Users.find({}).fetch(),
+  users: Users.find({}).fetch(),
     ready: subscription.ready(),
-  };
+};
 })(Request);

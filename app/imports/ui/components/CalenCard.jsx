@@ -1,12 +1,16 @@
 import React from 'react';
-import { Card, Image, Rating, Button } from 'semantic-ui-react';
+import { Card, Feed, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { Meteor } from 'meteor/meteor';
 import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Sessions } from '../../api/session/Session';
+import AddNote from './AddNote';
+import Note from './Note';
+import { Notes } from '../../api/note/Notes';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-export class CalenCard extends React.Component {
+class CalenCard extends React.Component {
 
   removeItem(docID) {
     swal({
@@ -47,7 +51,7 @@ export class CalenCard extends React.Component {
           </Card.Content>
           <Card.Content extra>
             <Button color='green'>Approve</Button>
-            <Button color='red' onClick={() => this.removeItem(this.props.user._id)}>
+            <Button color='red' onClick={() => this.removeItem(this.props.sesh._id)}>
               Decline
             </Button>
           </Card.Content>
@@ -59,7 +63,8 @@ export class CalenCard extends React.Component {
 
 /** Require a document to be passed to this component. */
 CalenCard.propTypes = {
-  sesh: PropTypes.object.isRequired,
+  sesh: PropTypes.array.isRequired,
+  notes: PropTypes.array.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */

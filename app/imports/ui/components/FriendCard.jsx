@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, Image, Rating, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 import { withRouter } from 'react-router-dom';
 import { Users } from '../../api/user/User';
-import swal from 'sweetalert';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 export class FriendCard extends React.Component {
@@ -32,9 +32,7 @@ export class FriendCard extends React.Component {
             <Image src={this.props.user.image}/>
             <Card.Header>{this.props.user.firstName} {this.props.user.lastName}</Card.Header>
             <Card.Meta>{this.props.user.mType} -- {this.props.user.dType}</Card.Meta>
-          </Card.Content>
-          <Card.Content extra>
-            <Rating icon='star' defaultRating={3} maxRating={5}/>
+            <Card.Description>{this.props.user.rating}</Card.Description>
           </Card.Content>
           <Card.Content extra>
             <Button onClick={() => this.removeItem(this.props.user._id)}>

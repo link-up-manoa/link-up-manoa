@@ -23,6 +23,10 @@ const UserSchema = new SimpleSchema({
   },
   mType: String,
   owner: String,
+  fType: {
+    type: String,
+    allowedValues: ['friend', 'pending'],
+  },
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

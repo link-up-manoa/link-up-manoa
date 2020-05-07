@@ -3,23 +3,24 @@ import { Card, Container } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import swal from 'sweetalert';
 import { Users } from '../../api/user/User';
 import { FriendCard } from '../components/FriendCard';
 
 /** Renders a table containing all of the friends documents. */
 class FriendView extends React.Component {
 
-
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
+  // eslint-disable-next-line consistent-return
   render() {
-    return (
-      <Container>
-        <Card.Group>
-          {this.props.users.map((user) => <FriendCard key={user._id} user={user}/>)}
-        </Card.Group>
-      </Container>
-    );
+    let newList = [];
+    newList = this.props.users.filter((user) => user.fType === 'friend');
+      return (
+          <Container>
+            <Card.Group>
+              {newList.map((user) => <FriendCard key={user._id} user={user}/>)}
+            </Card.Group>
+          </Container>
+      );
   }
 }
 

@@ -35,7 +35,7 @@ if (Users.find().count() === 0) {
 /** Initialize the database with a default friends document. */
 function addSession(data) {
   console.log(`  Adding: ${data.topic} (${data.owner})`);
-  Sessions.insert(data);
+  Sessions.insert({ username, time, date, place, members, topic, questions, owner });
 }
 
 /** Initialize the collection if empty. */

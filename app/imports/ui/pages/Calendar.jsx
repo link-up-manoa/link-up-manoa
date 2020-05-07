@@ -1,21 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Feed, Header, Card, Grid, Checkbox, Container } from 'semantic-ui-react';
+import { Loader, Header, Card, Grid, Checkbox, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
-import Note from '../components/Note';
-import AddNote from '../components/AddNote';
 import { CalenCard } from '../components/CalenCard';
 
 
-const defaultSession = [
-  { username: 'johnfoo', time: '300', date: '05/02/2020 03:30 PM', place: 'Hamilton Library',
-    members: 'Jatin, Kameron, Taylor, Aubrie', topic: 'Back-end', questions: 'What materials do we need?',
-    owner: 'john@foo.com',
-  },
-];
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -31,7 +23,10 @@ class Calendar extends React.Component {
             <Grid.Column>
               <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
         <Card.Group>
-          {this.props.sesh.map((study) => <CalenCard key={study._id} study={study}/>)}
+          {this.props.sesh.map((study, index) => <CalenCard
+              key={index}
+              study={study}
+              notes={this.props.notes.filter(note => (note.contactId === study._id))}/>)}
         </Card.Group>
             </Grid.Column>
           </Grid.Row>
