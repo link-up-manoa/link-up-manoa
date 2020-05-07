@@ -1,19 +1,18 @@
 import React from 'react';
-import { Button, Item } from 'semantic-ui-react';
+import { Button, Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { Users } from '../../api/user/User';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class RequestCard extends React.Component {
+export class RequestCard extends React.Component {
 
   myfunc(docID) {
       this.add.setAttribute('disabled', 'disabled');
-      this.props.users.status = 'friend';
+      this.props.user.status = 'friend';
       Users.insert(docID);
-  };
+  }
 
   removeItem(docID) {
     swal({
@@ -34,34 +33,30 @@ class RequestCard extends React.Component {
 
   render() {
     return (
-        <Item>
-          <Item.Image src={this.props.users.image}></Item.Image>
-          <Item.Content>
-            <Item.Header>{this.props.users.firstName} {this.props.users.lastName}</Item.Header>
-            <Item.Meta>{this.props.users.rating}</Item.Meta>
-            <Item.Description>{this.props.users.mType} -- {this.props.users.dType}</Item.Description>
-            <Item.Extra>
-              <Button.Group>
-                <Button color='green' type='submit' id='add' onClick={() => this.myfunc(this.props.users._id)}>
-                  Accept
-                </Button>
-                <Button color='red' id='remove' onClick={() => this.removeItem(this.props.users._id)}>
-                  Decline
-                </Button>
-              </Button.Group>
-            </Item.Extra>
-          </Item.Content>
-        </Item>
-
-
+        <Card>
+          <Card.Content>
+            <Image src={this.props.user.image}/>
+            <Card.Header>{this.props.user.firstName} {this.props.user.lastName}</Card.Header>
+            <Card.Meta>{this.props.user.mType} -- {this.props.user.dType}</Card.Meta>
+            <Card.Description>{this.props.user.rating}</Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Button.Group>
+              <Button color='green' type='submit' id='add' onClick={() => this.myfunc(this.props.user._id)}>
+                Accept
+              </Button>
+              <Button.Or/>
+              <Button color='red' id='remove' onClick={() => this.removeItem(this.props.user._id)}>
+                Decline
+              </Button>
+            </Button.Group>
+          </Card.Content>
+        </Card>
     );
   }
 }
 
 /** Require a document to be passed to this component. */
 RequestCard.propTypes = {
-  users: PropTypes.object.isRequired,
-};
-
-/** Wrap this component in withRouter since we use the <Link> React Router element. */
-export default withRouter(RequestCard);
+  user: PropTypes.object.isRequired,
+};(RequestCard);

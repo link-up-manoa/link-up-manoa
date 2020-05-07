@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Rating, Button } from 'semantic-ui-react';
+import { Card, Image, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { withRouter } from 'react-router-dom';

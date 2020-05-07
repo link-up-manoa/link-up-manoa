@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Item } from 'semantic-ui-react';
+import { Container, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Users } from '../../api/user/User';
@@ -16,9 +16,9 @@ class Request extends React.Component {
     newList = this.props.users.filter((user) => user.fType === 'pending');
       return (
           <Container>
-            <Item.Group>
+            <Card.Group>
             {newList.map((user) => <RequestCard key={user._id} user={user}/>)}
-            </Item.Group>
+            </Card.Group>
           </Container>
       );
   }
