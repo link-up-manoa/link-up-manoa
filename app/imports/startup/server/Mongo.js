@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
-import { Friends } from '../../api/stuff/Friends.js';
 import { Sessions } from '../../api/session/Session';
 
 /* eslint-disable no-console */

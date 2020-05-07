@@ -52,52 +52,6 @@
       "condition": "excellent"
     }
   ],
-  "defaultFriends": [
-    {
-      "firstName": "Taylor",
-      "lastName": "Gabatino",
-      "major": "Computer Science",
-      "image": "http://getdrawings.com/free-icon/business-woman-icon-74.png",
-      "owner": "john@foo.com",
-      "User": "friends"
-    },
-    {
-      "firstName": "Jatin",
-      "lastName": "Pandya",
-      "major": "Computer Science",
-      "image": "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
-      "owner": "john@foo.com",
-      "User": "friends"
-    },
-    {
-      "firstName": "Kameron",
-      "lastName": "Wong",
-      "major": "Computer Science",
-      "image": "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
-      "owner": "john@foo.com",
-      "User": "friends"
-    },
-    {
-      "firstName": "Aubrie",
-      "lastName": "Usui",
-      "major": "Computer Science",
-      "image": "http://getdrawings.com/free-icon/business-woman-icon-74.png",
-      "owner": "john@foo.com",
-      "User": "friends"
-    }
-  ],
-  "defaultSession": [
-    {
-      "username": "johnfoo",
-      "time": 300,
-      "date": "05/02/2020 03:30 PM",
-      "place": "Hamilton Library",
-      "members": "Jatin, Kameron, Taylor, Aubrie",
-      "topic": "Back-end",
-      "questions": "What materials do we need?",
-      "owner": "john@foo.com"
-    }
-  ],
 
   "defaultUsers": [
     {
@@ -160,5 +114,25 @@
       "mType": "Computer Science",
       "owner": "admin@foo.com"
     }
+  ],
+
+  "defaultSession": [
+    {
+      "username": "johnf",
+      "date": "05/10/2020 4:00 PM",
+      "place": "Hamilton Library",
+      "members": "Jatin, Kameron, Taylor, Aubrie",
+      "topic": "Back-end",
+      "questions": "None"
+    },
+    {
+      "username": "elb24",
+      "date": "05/18/2020 2:00 PM",
+      "place": "Zoom Online",
+      "members": "ICS 212 class",
+      "topic": "Learning C++ Language",
+      "questions": "None"
+    }
   ]
+
 }

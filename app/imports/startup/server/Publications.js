@@ -3,7 +3,6 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Users } from '../../api/user/User';
 import { Classes } from '../../api/class/Classes';
-import { Friends } from '../../api/stuff/Friends';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
 
