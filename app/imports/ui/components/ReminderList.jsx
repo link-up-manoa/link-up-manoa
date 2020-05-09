@@ -24,7 +24,8 @@ class ReminderList extends Component {
     // eslint-disable-next-line react/no-string-refs,react/no-find-dom-node
     const reminder = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
     const today = new Date();
-    const date = today.getFullYear().toString() + '/' + today.getMonth().toString() + '/' + today.getDate().toString();
+    const date = `${today.getFullYear().toString()}/${(today.getMonth()+1).toString()}/${today.getDate().toString()}`;
+
 
     Reminders.insert({
       text: reminder,
