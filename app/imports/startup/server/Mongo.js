@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
-import { Friends } from '../../api/stuff/Friends.js';
 import { Sessions } from '../../api/session/Session';
 import { History } from '../../api/history/History';
 
@@ -29,22 +28,8 @@ function addUser(data) {
 /** Initialize the collection if empty. */
 if (Users.find().count() === 0) {
   if (Meteor.settings.defaultUsers) {
-    console.log('Creating default data.');
+    console.log('Creating default users.');
     Meteor.settings.defaultUsers.map(data => addUser(data));
-  }
-}
-
-/** Initialize the database with a default friends document. */
-function addFriend(data) {
-  console.log(`  Adding: ${data.firstName} ${data.lastName} (${data.owner})`);
-  Friends.insert(data);
-}
-
-/** Initialize the collection if empty. */
-if (Friends.find().count() === 0) {
-  if (Meteor.settings.defaultFriends) {
-    console.log('Creating friend data');
-    Meteor.settings.defaultFriends.map(data => addFriend(data));
   }
 }
 

@@ -10,7 +10,6 @@ import { Sessions } from '../../api/session/Session';
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
   username: String,
-  time: Number,
   date: Date,
   place: String,
   members: String,
@@ -23,9 +22,9 @@ class CreateStudySession extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { username, time, date, place, members, topic, questions } = data;
+    const { username, date, place, members, topic, questions } = data;
     const owner = Meteor.user().username;
-    Sessions.insert({ username, time, date, place, members, topic, questions, owner },
+    Sessions.insert({ username, date, place, members, topic, questions, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -46,7 +45,6 @@ class CreateStudySession extends React.Component {
             <AutoForm ref={ref => { fRef = ref; }} schema={formSchema} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
                 <TextField name='username'/>
-                <NumField name='time' decimal={false}/>
                 <DateField name='date' decimal={false}/>
                 <TextField name='place'/>
                 <TextField name='members'/>

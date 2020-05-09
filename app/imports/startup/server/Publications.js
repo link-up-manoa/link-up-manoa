@@ -3,7 +3,6 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Users } from '../../api/user/User';
 import { Classes } from '../../api/class/Classes';
-import { Friends } from '../../api/stuff/Friends';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
 import { History } from '../../api/history/History';
@@ -40,14 +39,6 @@ Meteor.publish('UserAdmin', function publish() {
   return this.ready();
 });
 
-Meteor.publish('Friends', function publish() {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Friends.find({ owner: username });
-  }
-  return this.ready();
-});
-
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Classes', function publish() {
   if (this.userId) {
@@ -80,15 +71,6 @@ Meteor.publish('Session', function publish() {
   }
   return this.ready();
 });
-
-
-/** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-Meteor.publish('FriendsAdmin', function publish() {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Friends.find();
-  }
-    return this.ready();
-  });
 
 Meteor.publish('Notes', function publish() {
   if (this.userId) {

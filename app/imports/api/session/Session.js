@@ -8,12 +8,12 @@ const Sessions = new Mongo.Collection('Session');
 /** Define a schema to specify the structure of each document in the collection. */
 const SessionSchema = new SimpleSchema({
   username: String,
-  time: Number,
   date: Date,
   place: String,
   members: String,
   topic: String,
   questions: String,
+  owner: String,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

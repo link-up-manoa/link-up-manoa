@@ -1,22 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Feed, Header, Card, Grid, Checkbox, Container } from 'semantic-ui-react';
+import { Loader, Header, Card, Grid, Checkbox, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
-// import { Study } from '../components/Study';
 import { Notes } from '../../api/note/Notes';
-// import { Card } from 'semantic-ui-react';
-import Note from '../components/Note';
-import AddNote from '../components/AddNote';
+import { CalenCard } from '../components/CalenCard';
 
 
-const defaultSession = [
-  { username: 'johnfoo', time: '300', date: '05/02/2020 03:30 PM', place: 'Hamilton Library',
-    members: 'Jatin, Kameron, Taylor, Aubrie', topic: 'Back-end', questions: 'What materials do we need?',
-    owner: 'john@foo.com',
-  },
-];
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -32,45 +23,10 @@ class Calendar extends React.Component {
             <Grid.Column>
               <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
         <Card.Group>
-          <Card>
-            <Card.Content>
-              <Card.Header>Back-end</Card.Header>
-              <Card.Meta>05/02/2020 4:00 PM</Card.Meta>
-              <Card.Description>
-                Location: Hamilton Library
-                <br/>
-                Members: Jatin, Kameron, Taylor, Aubrie
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Feed>
-                {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
-              </Feed>
-            </Card.Content>
-            <Card.Content extra>
-              <AddNote/>
-            </Card.Content>
-          </Card>
-
-          <Card>
-            <Card.Content>
-              <Card.Header>Team Bonding</Card.Header>
-              <Card.Meta>05/18/2020 04:00 PM</Card.Meta>
-              <Card.Description>
-                Location: Zoom online
-                <br/>
-                Members: Julian, Brooke, Danny
-              </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <Feed>
-                  {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
-                </Feed>
-              </Card.Content>
-              <Card.Content extra>
-                <AddNote/>
-              </Card.Content>
-          </Card>
+          {this.props.sesh.map((study) => <CalenCard
+              key={study._id}
+              study={study}
+              notes={this.props.notes.filter(note => (note.contactId === study._id))}/>)}
         </Card.Group>
             </Grid.Column>
           </Grid.Row>
@@ -95,7 +51,7 @@ class Calendar extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 Calendar.propTypes = {
-  sessions: PropTypes.array.isRequired,
+  sesh: PropTypes.array.isRequired,
   notes: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -105,7 +61,7 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe('Session');
   const subscription2 = Meteor.subscribe('Notes');
   return {
-    sessions: Sessions.find({}).fetch(),
+    sesh: Sessions.find({}).fetch(),
     notes: Notes.find({}).fetch(),
     ready: subscription.ready() && subscription2.ready() };
 })(Calendar);
