@@ -24,7 +24,7 @@ const UserSchema = new SimpleSchema({
   mType: String,
   owner: String,
   fType: {
-    type: String,
+    type: [String],
     allowedValues: ['friend', 'pending'],
   },
 }, { tracker: Tracker });
