@@ -1,12 +1,12 @@
 import { Mongo } from 'meteor/mongo';
-import Schema from 'simpl-schema';
+import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
 /** Define a Mongo collection to hold the data. */
 const FriendRequests = new Mongo.Collection('FriendRequests');
 
 /** Define a schema to specify the structure of each document in the collection. */
-const FriendRequestSchema = new Schema({
+const FriendRequestSchema = new SimpleSchema({
   requester: {
     type: Number,
     required: true,
@@ -18,6 +18,7 @@ const FriendRequestSchema = new Schema({
   status: {
     type: Number,
     required: true,
+    allowedValues: [1, 2, 3],
   },
 }, { tracker: Tracker });
 

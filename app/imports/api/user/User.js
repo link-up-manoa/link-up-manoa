@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
+import mongoose from 'node/inspector';
 
 /** Define a Mongo collection to hold the data. */
 const Users = new Mongo.Collection('User');
@@ -27,6 +28,18 @@ const UserSchema = new SimpleSchema({
     type: [String],
     allowedValues: ['friend', 'pending'],
   },
+  sentRequest: [{
+    username: { type: String, default: '' },
+  }],
+  request: [{
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  username: { type: String, default: '' },
+  }],
+  friendsList: [{
+  friendId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    friendName: { type: String, default: '' },
+  }],
+  totalRequest: { type: Number, default: 0 },
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

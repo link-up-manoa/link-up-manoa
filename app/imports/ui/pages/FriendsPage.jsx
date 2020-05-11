@@ -1,20 +1,15 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Table, Header, Tab, Grid, Icon, Form, Button } from 'semantic-ui-react';
+import { Table, Header, Tab, Grid, Icon, Form, Button, Input } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Users } from '../../api/user/User';
 import FriendView from './FriendView';
 import Request from './Request';
+import Signin from './Signup';
 
 /** Renders a table containing all of the friends documents. */
 class FriendsPage extends React.Component {
-
-  state = {}
-
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
-
-  handleSubmit = () => this.setState({ name: '' })
 
   panes = [
     {
@@ -31,8 +26,6 @@ class FriendsPage extends React.Component {
 /** create local variables that tells who are these friends , how to calculate and retrieve who are the friends, pending, and requeting friends
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-  const { name } = this.state;
-
     return (
         <Grid container celled='internally'>
           <Header as="h2" textAlign="center">Your Friends</Header>
@@ -109,16 +102,9 @@ class FriendsPage extends React.Component {
 
           <Grid.Row>
             <Grid.Column>
-              <Form onSubmit={this.handleSubmit}>
-                <Form.Field inline>
-                  <label>Email or Username:</label>
-                  <Form.Input
-                      placeholder='Type name...'
-                      name='name'
-                      value={name}
-                      onChange={this.handleChange}/>
-                </Form.Field>
-                <Button type='submit'>Add</Button>
+              <Form action='/search' method='post' onSubmit={this.handleSubmit}>
+                <Input type='text' name='searchfriend' placeholder='username'/>
+                  <Input type='submit' name='search'/>
               </Form>
             </Grid.Column>
           </Grid.Row>
@@ -126,6 +112,7 @@ class FriendsPage extends React.Component {
     );
   }
 }
+
 
 /** Require an array of Stuff documents in the props. */
 FriendsPage.propTypes = {
