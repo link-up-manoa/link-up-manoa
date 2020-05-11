@@ -6,6 +6,7 @@ import { Classes } from '../../api/class/Classes';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
 import { History } from '../../api/history/History';
+import { Group } from '../../api/group/Group';
 
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Stuff', function publish() {
@@ -76,6 +77,15 @@ Meteor.publish('Notes', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Notes.find({ owner: username });
+  }
+  return this.ready();
+});
+
+
+Meteor.publish('Group', function publish() {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Group.find({ owner: username });
   }
   return this.ready();
 });
