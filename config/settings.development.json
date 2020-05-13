@@ -144,24 +144,42 @@
     }
   ],
 
-  "defaultSession": [
+  "defaultSessions": [
     {
-      "username": "johnf",
+      "firstName": "Taylor",
+      "lastName": "Gabatino",
       "date": "05/10/2020 4:00 PM",
-      "place": "Hamilton Library",
-      "members": "Jatin, Kameron, Taylor, Aubrie",
-      "topic": "Back-end",
-      "questions": "None",
-      "owner": "john@foo.com"
+      "location": "Hamilton Library",
+      "studyType": "No questions",
+      "usersAttending": ["john@foo.com"],
+      "subject": "ICS 311 Algorithms"
     },
     {
-      "username": "elb24",
-      "date": "05/18/2020 2:00 PM",
-      "place": "Zoom Online",
-      "members": "ICS 212 class",
-      "topic": "Learning C++ Language",
-      "questions": "None",
-      "owner": "john@foo.com"
+      "firstName": "Taylor",
+      "lastName": "Gabatino",
+      "date": "05/10/2020 4:00 PM",
+      "location": "Hamilton Library",
+      "studyType": "No questions",
+      "usersAttending": ["john@foo.com"],
+      "subject": "ICS 311 Algorithms"
+    },
+    {
+      "firstName": "Taylor",
+      "lastName": "Gabatino",
+      "date": "05/10/2020 4:00 PM",
+      "location": "Hamilton Library",
+      "studyType": "No questions",
+      "usersAttending": ["john@foo.com"],
+      "subject": "ICS 311 Algorithms"
+    },
+    {
+      "firstName": "Taylor",
+      "lastName": "Gabatino",
+      "date": "05/10/2020 4:00 PM",
+      "location": "Hamilton Library",
+      "studyType": "No questions",
+      "usersAttending": ["john@foo.com"],
+      "subject": "ICS 311 Algorithms"
     }
   ],
   "defaultHistory": [
