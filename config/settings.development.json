@@ -63,7 +63,8 @@
       "dType": "BS",
       "mType": "Computer Science",
       "owner": "john@foo.com",
-      "fType": "friend"
+      "fType": "friend",
+      "sensei": true
     },
     {
       "firstName": "Danny",
@@ -74,7 +75,8 @@
       "dType": "BS",
       "mType": "Computer Science",
       "owner": "john@foo.com",
-      "fType": "pending"
+      "fType": "pending",
+      "sensei": false
     },
     {
       "firstName": "Maybel",
@@ -85,7 +87,8 @@
       "dType": "BS",
       "mType": "Computer Science",
       "owner": "john@foo.com",
-      "fType": "pending"
+      "fType": "pending",
+      "sensei": false
     },
     {
       "firstName": "Taylor",
@@ -96,7 +99,8 @@
       "dType": "BS",
       "mType": "Computer Science",
       "owner": "taylor@foo.com",
-      "fType": "friend"
+      "fType": "friend",
+      "sensei": true
     },
     {
       "firstName": "Jatin",
@@ -107,7 +111,8 @@
       "dType": "BS",
       "mType": "Computer Science",
       "owner": "jatin@foo.com",
-      "fType": "friend"
+      "fType": "friend",
+      "sensei": true
     },
     {
       "firstName": "Kameron",
@@ -118,7 +123,8 @@
       "dType": "BS",
       "mType": "Computer Science",
       "owner": "kameron@foo.com",
-      "fType": "friend"
+      "fType": "friend",
+      "sensei": true
     },
     {
       "firstName": "Aubrie",
@@ -129,7 +135,8 @@
       "dType": "BS",
       "mType": "Computer Science",
       "owner": "aubrie@foo.com",
-      "fType": "friend"
+      "fType": "friend",
+      "sensei": true
     },
     {
       "firstName": "Admin",
@@ -140,7 +147,8 @@
       "dType": "PhD",
       "mType": "Computer Science",
       "owner": "admin@foo.com",
-      "fType": "friend"
+      "fType": "friend",
+      "sensei": false
     }
   ],
 

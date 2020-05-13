@@ -27,6 +27,7 @@ const UserSchema = new SimpleSchema({
     type: String,
     allowedValues: ['friend', 'pending'],
   },
+  sensei: Boolean,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
