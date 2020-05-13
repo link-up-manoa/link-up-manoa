@@ -9,7 +9,7 @@ export class RequestCard extends React.Component {
 
   myfunc(docID) {
       this.add.setAttribute('disabled', 'disabled');
-      this.props.user.fType = 'friend';
+      this.props.user.fType.set(fType, 'friend');
       Users.insert(docID);
   }
 
@@ -41,7 +41,7 @@ export class RequestCard extends React.Component {
           </Card.Content>
           <Card.Content extra>
             <Button.Group>
-              <Button color='green' type='submit' id='add' onClick={() => this.myfunc(this.props.user._id)}>
+              <Button color='green' type='button' id='add' className='btn-success' onClick={() => this.myfunc(this.props.user._id)}>
                 Accept
               </Button>
               <Button.Or/>
@@ -59,4 +59,3 @@ export class RequestCard extends React.Component {
 RequestCard.propTypes = {
   user: PropTypes.object.isRequired,
 }
-

@@ -18,7 +18,7 @@ const FriendRequestSchema = new SimpleSchema({
   status: {
     type: Number,
     required: true,
-    allowedValues: [1, 2, 3],
+    allowedValues: [1, 2, 3], // 1 is requested, 2 is accepted, 3 is rejected
   },
 }, { tracker: Tracker });
 

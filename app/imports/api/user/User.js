@@ -28,18 +28,6 @@ const UserSchema = new SimpleSchema({
     type: String,
     allowedValues: ['friend', 'pending'],
   },
-  sentRequest: [{
-    username: { type: String, default: '' },
-  }],
-  request: [{
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  username: { type: String, default: '' },
-  }],
-  friendsList: [{
-  friendId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    friendName: { type: String, defaultValue: '' },
-  }],
-  totalRequest: { type: Number, defaultValue: 0 },
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

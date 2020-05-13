@@ -1,15 +1,43 @@
 import React from 'react';
+import _ from 'lodash';
 import { Meteor } from 'meteor/meteor';
-import { Table, Header, Tab, Grid, Icon, Form, Button, Input } from 'semantic-ui-react';
+import { Table, Header, Tab, Grid, Icon, Form, Button, Search } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Users } from '../../api/user/User';
 import FriendView from './FriendView';
 import Request from './Request';
-import Signin from './Signup';
+import { FriendRequests } from '../../api/user/FriendRequest';
+
+const initialState = { results: [], value: '' };
 
 /** Renders a table containing all of the friends documents. */
 class FriendsPage extends React.Component {
+
+  state = initialState;
+
+  handleResultSelect = (e, { result }) => this.setState({ value: result.this.props.user.firstName })
+
+  handleSearchChange = (e, { value }) => {
+
+    setTimeout(() => {
+      if (this.state.value.length < 1) return this.setState(initialState);
+
+      const re = new RegExp(_.escapeRegExp(this.state.value), 'i');
+      const isMatch = (result) => re.test(result.this.props.user.firstName);
+
+      this.setState({
+        isLoading: false,
+        results: _.filter(this.props.user, isMatch),
+      });
+    }, 300)
+  }
+
+  sendFriendRequest(docID) {
+    FriendRequests.requester = this.props.user._id;
+    FriendRequests.recipient = docID;
+    FriendRequests.status = 1;
+  }
 
   panes = [
     {
@@ -26,6 +54,8 @@ class FriendsPage extends React.Component {
 /** create local variables that tells who are these friends , how to calculate and retrieve who are the friends, pending, and requeting friends
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+  const { value, results } = this.state;
+
     return (
         <Grid container celled='internally'>
           <Header as="h2" textAlign="center">Your Friends</Header>
@@ -102,9 +132,16 @@ class FriendsPage extends React.Component {
 
           <Grid.Row>
             <Grid.Column>
-              <Form action='/search' method='post' onSubmit={this.handleSubmit}>
-                <Input type='text' name='searchfriend' placeholder='username'/>
-                  <Input type='submit' name='search'/>
+              <Form action='/search' method='post' onSubmit={() => this.sendFriendRequest(this.results)}>
+                <Search
+                    onResultSelect={this.handleResultSelect}
+                    onSearchChange={_.debounce(this.handleSearchChange, 500, {
+                      leading: true,
+                    })}
+                    results={results}
+                    value={value}
+                    {...this.props}
+                />
               </Form>
             </Grid.Column>
           </Grid.Row>
