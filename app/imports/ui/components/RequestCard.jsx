@@ -3,15 +3,23 @@ import { Button, Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { Users } from '../../api/user/User';
+import { FriendRequests } from '../../api/user/FriendRequest';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 export class RequestCard extends React.Component {
 
   myfunc(docID) {
       this.add.setAttribute('disabled', 'disabled');
-      this.props.user.fType.set(fType, 'friend');
-      Users.insert(docID);
+      FriendRequests.status = 2;
+
+    function addToList(user) {
+
+      // this.removeItem(user);
+    }
+
+    addToList(docID);
   }
+
 
   removeItem(docID) {
     swal({
@@ -28,6 +36,7 @@ export class RequestCard extends React.Component {
         swal('Cancelled', 'User has not been deleted', 'error');
       }
     });
+    FriendRequests.status = 3;
   }
 
   render() {
@@ -41,7 +50,7 @@ export class RequestCard extends React.Component {
           </Card.Content>
           <Card.Content extra>
             <Button.Group>
-              <Button color='green' type='button' id='add' className='btn-success' onClick={() => this.myfunc(this.props.user._id)}>
+              <Button color='green' type='button' id='add' onClick={() => this.myfunc(this.props.user.owner._id)}>
                 Accept
               </Button>
               <Button.Or/>
@@ -58,4 +67,4 @@ export class RequestCard extends React.Component {
 /** Require a document to be passed to this component. */
 RequestCard.propTypes = {
   user: PropTypes.object.isRequired,
-}
+};

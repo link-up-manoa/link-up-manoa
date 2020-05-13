@@ -27,7 +27,6 @@ class FriendsPage extends React.Component {
       const isMatch = (result) => re.test(result.this.props.user.firstName);
 
       this.setState({
-        isLoading: false,
         results: _.filter(this.props.user, isMatch),
       });
     }, 300)
@@ -134,6 +133,7 @@ class FriendsPage extends React.Component {
             <Grid.Column>
               <Form action='/search' method='post' onSubmit={() => this.sendFriendRequest(this.results)}>
                 <Search
+                    placeholder='Type Name...'
                     onResultSelect={this.handleResultSelect}
                     onSearchChange={_.debounce(this.handleSearchChange, 500, {
                       leading: true,
