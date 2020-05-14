@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container, Table, Header, Loader } from 'semantic-ui-react';
+import swal from 'sweetalert';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Sessions } from '../../api/session/Session';
@@ -11,6 +12,21 @@ class UserSessions extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+  }
+
+  /** On submit, insert the data. */
+  submit(data, formRef) {
+    const { name, price, size, vendor, availability } = data;
+    const owner = Meteor.user().username;
+    Sessions.insert({ name, price, size, vendor, availability, owner },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          } else {
+            swal('Success', 'Session added successfully', 'success');
+            formRef.reset();
+          }
+        });
   }
 
   /** Render the page once subscriptions have been received. */
