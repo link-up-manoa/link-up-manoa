@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, List, Header, Card, Grid, Checkbox } from 'semantic-ui-react';
+import { Loader, Header, Card, Grid, Checkbox, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
@@ -21,41 +21,102 @@ class Calendar extends React.Component {
         <Grid container columns={1} celled='internally'>
           <Grid.Row>
             <Grid.Column>
-              <Header as="h2" textAlign="center" inverted>My Reminders</Header>
+              <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
         <Card.Group>
-          {this.props.sesh.map((study) => <CalenCard
-              key={study._id}
-              study={study}
-              notes={this.props.notes.filter(note => (note.contactId === study._id))}/>)}
+         <Card>
+          <Card.Content>
+            <Card.Header>Team Bonding</Card.Header>
+            <Card.Meta>05/14/2020 4:30 PM</Card.Meta>
+            <Card.Description>
+              Location: Hamilton Library
+              <br/>
+              Members: ICS 314 class
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Feed>
+              {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+            </Feed>
+          </Card.Content>
+          <Card.Content extra>
+            <AddNote/>
+          </Card.Content>
+          <Card.Content extra>
+            <Button color='green'>Approve</Button>
+            <Button color='red' onClick={() => this.removeItem(this.props.sesh._id)}>
+              Decline
+            </Button>
+          </Card.Content>
+        </Card>
+          
+         <Card>
+          <Card.Content>
+            <Card.Header>Calculus Functions</Card.Header>
+            <Card.Meta>06/01/2020 2:00 PM</Card.Meta>
+            <Card.Description>
+              Location: Online Zoom Call
+              <br/>
+              Members: MATH 242 class
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Feed>
+              {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+            </Feed>
+          </Card.Content>
+          <Card.Content extra>
+            <AddNote/>
+          </Card.Content>
+          <Card.Content extra>
+            <Button color='green'>Approve</Button>
+            <Button color='red' onClick={() => this.removeItem(this.props.sesh._id)}>
+              Decline
+            </Button>
+          </Card.Content>
+        </Card>
+          
+         <Card>
+          <Card.Content>
+            <Card.Header>Back-end Engineering</Card.Header>
+            <Card.Meta>06/07/2020 10:00 AM</Card.Meta>
+            <Card.Description>
+              Location: ICS Space POST 318
+              <br/>
+              Members: Project contributors
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Feed>
+              {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+            </Feed>
+          </Card.Content>
+          <Card.Content extra>
+            <AddNote/>
+          </Card.Content>
+          <Card.Content extra>
+            <Button color='green'>Approve</Button>
+            <Button color='red' onClick={() => this.removeItem(this.props.sesh._id)}>
+              Decline
+            </Button>
+          </Card.Content>
+        </Card>
         </Card.Group>
             </Grid.Column>
           </Grid.Row>
 
-          <List divided relaxed>
-            <List.Item>
-              <Checkbox/>
-              <List.Content>
-                <List.Header as='p'>Finish Reading Chapter 3!</List.Header>
-                <List.Description>Due: Friday 5/14</List.Description>
-              </List.Content>
-            </List.Item>
-            <List.Item>
-
-              <List.Content>
-                <Checkbox/>
-                <List.Header as='p' color={'white'}>
-                  Study for Johnson's WOD!</List.Header>
-                <List.Description >Due: Tuedsday 5/19</List.Description>
-              </List.Content>
-            </List.Item>
-            <List.Item>
-              <Checkbox/>
-              <List.Content>
-                <List.Header as='p'>Work on Final project Website!</List.Header>
-                <List.Description>Due: Wednesday 5/13</List.Description>
-              </List.Content>
-            </List.Item>
-          </List>
+        <Grid.Row>
+          <Grid.Column>
+            <Header as="h2" textAlign="center" inverted>Reminders</Header>
+            <Container>
+              <Checkbox inverted="true" label='Create study guide of chapter 3'/>
+              <br/>
+              <Checkbox inverted="true" label='Bring calculator'/>
+              <br/>
+              <Checkbox inverted="true" label='Make diagram for project'/>
+              <br/>
+              </Container>
+          </Grid.Column>
+        </Grid.Row>
         </Grid>
     );
   }
