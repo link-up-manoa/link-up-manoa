@@ -7,13 +7,15 @@ import {
   Loader,
   Card,
   Image,
-  Reveal,
+  Icon,
   Table,
   Rating,
-  Divider,
+  Button,
+    Grid
 } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { Users } from '../../api/user/User';
 import { Classes } from '../../api/class/Classes';
 import { History } from '../../api/history/History';
@@ -30,78 +32,189 @@ class LevelUp extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h2" textAlign="center" inverted>Level Up</Header>
+          <Header as="h2" textAlign="center" inverted>Available Tutors</Header>
           <Card.Group>
-            {this.props.user[0].sensei ?
-                <Card centered color = 'blue'>
-                  <Reveal animated = 'move'>
-                    <Reveal.Content visible>
-                      <Image src={'https://i.imgur.com/FRDjtgA.jpg'} wrapped ui={false} />
-                    </Reveal.Content>
-                    <Reveal.Content hidden>
-                      <div>
-                        <h1>Sensei</h1>
-                        <h2>What is a sensei?</h2>
-                        <body>The sensei has participated in a total of at least 10 study sessions, achieved 5 positive user
-                        ratings, and has taken courses up to the 400 level.</body>
-                      </div>
-                    </Reveal.Content>
-                  </Reveal>
-                  <Card.Content center>
-                    <Card.Header>Sensei</Card.Header>
-                  </Card.Content>
-                </Card> :
-                <Card centered color = 'red'>
-                  <Reveal animated = 'move'>
-                    <Reveal.Content visible>
-                      /** Change to a different image. **/
-                      <Image src={'https://cdn.quotesgram.com/img/64/23/1805985858-mr-miyagi-focus-meme-generator-focus-grasshopper-5e64b5_jpg_1358036825.jpg'} wrapped ui={false} />
-                    </Reveal.Content>
-                    <Reveal.Content hidden>
-                      <div>
-                        <h1>Grasshopper</h1>
-                        <h2>What is a grasshopper?</h2>
-                        <body>The grasshopper is just starting out on their journey as a student. In order
-                        to move on to the next level, participate in at least 2 study sessions, achieve
-                        one user rating of 5 starts, and take 100 level classes.</body>
-                      </div>
-                    </Reveal.Content>
-                  </Reveal>
-                  <Card.Content>
-                    <Card.Header>Grasshopper</Card.Header>
-                  </Card.Content>
-                </Card>}
-
+            <Card centered>
+              <Image src={this.props.user[0].image} wrapped ui={false} />
+              <Card.Content>
+                <Card.Header>{this.props.user[0].firstName} {this.props.user[0].lastName}</Card.Header>
+                <Card.Meta>Rating: {this.props.user[0].rating}</Card.Meta>
+                <Card.Meta>Status: {this.props.user[0].status}</Card.Meta>
+                <Card.Meta>Major: {this.props.user[0].dType} - {this.props.user[0].mType} </Card.Meta>
+                <Card.Description>
+                  Tutoring Specialty: ICS 414, ICS 212
+                  <ul>
+                    {this.props.classes.filter(obj => obj.status.includes('Currently-Taking')).map(
+                        (obj, index) => (<li key={index}>{obj.classAlpha} {obj.classNum}</li>),
+                    )}
+                  </ul>
+                  <div className="ui labeled button">
+                    <div className="ui red button">
+                      <i className="heart icon"></i> Ratings
+                    </div>
+                    <a className="ui basic red left pointing label">
+                      42
+                    </a>
+                  </div>
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <Grid columns='two' divided>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <Button icon labelPosition='left' as={NavLink} activeClassName="active"
+                              exact to="/addClass" key='addClass'>
+                        <Icon name='add' />
+                        Request Tutor
+                      </Button>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Button icon labelPosition='left' as={NavLink} activeClassName="active"
+                              exact to={`/editUser/${this.props.user[0]._id}`} key='editUser'>
+                        <Icon name='address card' />
+                        See Profile
+                      </Button>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Card.Content>
+            </Card>
+            <Card centered>
+              <Image src={this.props.user[1].image} wrapped ui={false} />
+              <Card.Content>
+                <Card.Header>{this.props.user[1].firstName} {this.props.user[1].lastName}</Card.Header>
+                <Card.Meta>Rating: {this.props.user[1].rating}</Card.Meta>
+                <Card.Meta>Status: {this.props.user[1].status}</Card.Meta>
+                <Card.Meta>Major: {this.props.user[1].dType} - {this.props.user[1].mType} </Card.Meta>
+                <Card.Description>
+                  Tutoring Specialty: ICS 141, ICS 241
+                  <ul>
+                    {this.props.classes.filter(obj => obj.status.includes('Currently-Taking')).map(
+                        (obj, index) => (<li key={index}>{obj.classAlpha} {obj.classNum}</li>),
+                    )}
+                  </ul>
+                  <div className="ui labeled button">
+                    <div className="ui red button">
+                      <i className="heart icon"></i> Ratings
+                    </div>
+                    <a className="ui basic red left pointing label">
+                      29
+                    </a>
+                  </div>
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <Grid columns='two' divided>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <Button icon labelPosition='left' as={NavLink} activeClassName="active"
+                              exact to="/addClass" key='addClass'>
+                        <Icon name='add' />
+                        Request Tutor
+                      </Button>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Button icon labelPosition='left' as={NavLink} activeClassName="active"
+                              exact to={`/editUser/${this.props.user[0]._id}`} key='editUser'>
+                        <Icon name='address card' />
+                        See Profile
+                      </Button>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Card.Content>
+            </Card>
+            <Card centered>
+              <Image src={this.props.user[2].image} wrapped ui={false} />
+              <Card.Content>
+                <Card.Header>{this.props.user[2].firstName} {this.props.user[2].lastName}</Card.Header>
+                <Card.Meta>Rating: {this.props.user[2].rating}</Card.Meta>
+                <Card.Meta>Status: {this.props.user[2].status}</Card.Meta>
+                <Card.Meta>Major: {this.props.user[2].dType} - {this.props.user[2].mType} </Card.Meta>
+                <Card.Description>
+                  Tutoring Specialty: ICS 111, ICS 211
+                  <ul>
+                    {this.props.classes.filter(obj => obj.status.includes('Currently-Taking')).map(
+                        (obj, index) => (<li key={index}>{obj.classAlpha} {obj.classNum}</li>),
+                    )}
+                  </ul>
+                  <div className="ui labeled button">
+                    <div className="ui red button">
+                      <i className="heart icon"></i> Ratings
+                    </div>
+                    <a className="ui basic red left pointing label">
+                      75
+                    </a>
+                  </div>
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <Grid columns='two' divided>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <Button icon labelPosition='left' as={NavLink} activeClassName="active"
+                              exact to="/addClass" key='addClass'>
+                        <Icon name='add' />
+                        Request Tutor
+                      </Button>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Button icon labelPosition='left' as={NavLink} activeClassName="active"
+                              exact to={`/editUser/${this.props.user[0]._id}`} key='editUser'>
+                        <Icon name='address card' />
+                        See Profile
+                      </Button>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Card.Content>
+            </Card>
+            <Card centered>
+              <Image src={this.props.user[0].image} wrapped ui={false} />
+              <Card.Content>
+                <Card.Header>Basil Barb</Card.Header>
+                <Card.Meta>Rating: {this.props.user[0].rating}</Card.Meta>
+                <Card.Meta>Status: {this.props.user[0].status}</Card.Meta>
+                <Card.Meta>Major: {this.props.user[0].dType} - {this.props.user[0].mType} </Card.Meta>
+                <Card.Description>
+                  Tutoring Specialty: ICS 311, ICS 314
+                  <ul>
+                    {this.props.classes.filter(obj => obj.status.includes('Currently-Taking')).map(
+                        (obj, index) => (<li key={index}>{obj.classAlpha} {obj.classNum}</li>),
+                    )}
+                  </ul>
+                  <div className="ui labeled button">
+                    <div className="ui red button">
+                      <i className="heart icon"></i> Ratings
+                    </div>
+                    <a className="ui basic red left pointing label">
+                      23
+                    </a>
+                  </div>
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <Grid columns='two' divided>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <Button icon labelPosition='left' as={NavLink} activeClassName="active"
+                              exact to="/addClass" key='addClass'>
+                        <Icon name='add' />
+                        Request Tutor
+                      </Button>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Button icon labelPosition='left' as={NavLink} activeClassName="active"
+                              exact to={`/editUser/${this.props.user[0]._id}`} key='editUser'>
+                        <Icon name='address card' />
+                        See Profile
+                      </Button>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Card.Content>
+            </Card>
           </Card.Group>
-<Divider horizontal inverted>Rate Your Study Buddies</Divider>
-          <Table celled padded>
-            <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell singleLine>User</Table.HeaderCell>
-              <Table.HeaderCell>Username</Table.HeaderCell>
-              <Table.HeaderCell>Rating</Table.HeaderCell>
-              <Table.HeaderCell>Study Again</Table.HeaderCell>
-              <Table.HeaderCell>Comments</Table.HeaderCell>
-            </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <Image src={this.props.history[0].image} wrapped ui={false} />
-                </Table.Cell>
-                <Table.Cell single line>{this.props.history[0].firstName} {this.props.history[0].lastName}</Table.Cell>
-                <Table.Cell>
-                  <Rating icon='star' defaultRating={3} maxRating={5} />
-                </Table.Cell>
-                <Table.Cell>
-                  <Rating icon='heart' defaultRating={3} maxRating={5} />
-                </Table.Cell>
-                <Table.Cell>
-                  Insert the comments left by the user, if any.
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
         </Container>
     );
   }
