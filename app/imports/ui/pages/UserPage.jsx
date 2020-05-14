@@ -62,7 +62,7 @@ class UserPage extends React.Component {
             </Item>
           </Grid.Column>
           <Grid.Column textAlign="center">
-            <Item as={NavLink} exact to='/studyList'>
+            <Item as={NavLink} exact to='/usersessions'>
               <Icon name="book" size="huge" inverted/>
               <Header as="h2" inverted>My Study Sessions</Header>
             </Item>

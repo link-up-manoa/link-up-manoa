@@ -20,6 +20,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import CreateStudySession from '../pages/CreateStudySession';
+import UserSessions from '../pages/UserSessions';
 import EditUser from '../pages/EditUser';
 import LevelUp from '../pages/LevelUp';
 import Friend from '../pages/FriendView';
@@ -38,6 +39,7 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/userpage" component={UserPage}/>
+              <ProtectedRoute path="/usersessions" component={UserSessions}/>
               <ProtectedRoute path="/create" component={CreateStudySession}/>
               <ProtectedRoute path="/levelup" component={LevelUp}/>
               <ProtectedRoute path="/friends" component={FriendsPage}/>
