@@ -6,10 +6,8 @@ import swal from 'sweetalert';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
-import { Reminders } from '../../api/stuff/Reminders';
 import Note from './components/Note';
 import AddNote from './components/AddNote';
-import ReminderList from './components/ReminderList';
 
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
