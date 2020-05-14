@@ -6,12 +6,12 @@ import swal from 'sweetalert';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
-import Note from './components/Note';
-import AddNote from './components/AddNote';
+import Note from '../components/Note';
+import AddNote from '../components/AddNote';
 
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
-  
+
   removeItem(docID) {
     swal({
       title: 'Do you really want to delete this Friend?',
@@ -28,7 +28,7 @@ class Calendar extends React.Component {
       }
     });
   }
-  
+
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -67,7 +67,7 @@ class Calendar extends React.Component {
             </Button>
           </Card.Content>
         </Card>
-          
+
          <Card>
           <Card.Content>
             <Card.Header>Calculus Functions</Card.Header>
@@ -93,7 +93,7 @@ class Calendar extends React.Component {
             </Button>
           </Card.Content>
         </Card>
-          
+
          <Card>
           <Card.Content>
             <Card.Header>Back-end Engineering</Card.Header>
