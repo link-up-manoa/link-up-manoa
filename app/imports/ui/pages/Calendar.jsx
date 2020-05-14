@@ -4,14 +4,11 @@ import { Loader, Feed, Header, Card, Grid, Checkbox, Container } from 'semantic-
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
-// import { Study } from '../components/Study';
 import { Notes } from '../../api/note/Notes';
 import { Reminders } from '../../api/stuff/Reminders';
-// import { Card } from 'semantic-ui-react';
-import Note from '../components/Note';
-import AddNote from '../components/AddNote';
 import ReminderList from '../components/ReminderList';
 import CalenCard from '../components/CalenCard';
+import { _ } from 'meteor/underscore';
 
 
 const defaultSession = [
@@ -27,7 +24,6 @@ class Calendar extends React.Component
 
 constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
     this.state = { choices: [] };
   }
 
@@ -40,11 +36,11 @@ constructor(props) {
   renderPage() {
     let sessionsToView = this.props.sessions;
     sessionsToView = _.filter(sessionsToView, (session) => {
-      if (this.sate.choices.length === 0) {
+      if (this.state.choices.length === 0) {
         return true;
       }
-      console.log(session.course, this.state.choices);
-      return _.contains(this.stat.choices, session.course);
+      console.log(session.topic, this.state.choices);
+      return _.contains(this.state.choices, session.topic);
     });
   
     return (
@@ -52,56 +48,18 @@ constructor(props) {
           <Grid.Row>
             <Grid.Column>
               <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
-               <Card.Group itermsPerRow={4}>
-                 {sessionsToView.map((session, index) => <CalenCard key={index} session={session}/>)}
-                  <Card.Content extra>
-                  <Feed>
-                    {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
-                 </Feed>
-            </Card.Content>
-            <Card.Content extra>
-              <AddNote/>
-            </Card.Content>
-          </Card>
-
-          <Card>
-            <Card.Content>
-              <Card.Header>Team Bonding</Card.Header>
-              <Card.Meta>05/18/2020 04:00 PM</Card.Meta>
-              <Card.Description>
-                Location: Zoom online
-                <br/>
-                Members: Julian, Brooke, Danny
-              </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <Feed>
-                  {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
-                </Feed>
-              </Card.Content>
-              <Card.Content extra>
-                <AddNote/>
-              </Card.Content>
-          </Card>
-        </Card.Group>
+              <Card.Group itermsPerRow={4}>
+                {sessionsToView.map((session, index) => <CalenCard 
+                    key={index} 
+                    session={session}
+                    notes={this.props.notes.filter(note => (note.contactId === contact._id))}/>)}
+              </Card.Group>
             </Grid.Column>
           </Grid.Row>
 
-        <Grid.Row>
-          {/* <Grid.Column> */}
-          {/*  <Header as="h2" textAlign="center" inverted>Reminders</Header> */}
-          {/*  <Container> */}
-          {/*    <Checkbox inverted="true" label='Create study guide of chapter 3'/> */}
-          {/*    <br/> */}
-          {/*    <Checkbox inverted="true" label='Bring calculator'/> */}
-          {/*    <br/> */}
-          {/*    <Checkbox inverted="true" label='Make diagram for project'/> */}
-          {/*    <br/> */}
-          {/*    </Container> */}
-          {/* </Grid.Column> */}
-          <ReminderList reminders={Reminders}/>
-        </Grid.Row>
-
+          <Grid.Row>
+            <ReminderList reminders={Reminders}/>
+          </Grid.Row>
         </Grid>
     );
   }
