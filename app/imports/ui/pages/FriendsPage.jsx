@@ -27,7 +27,7 @@ class FriendsPage extends React.Component {
   render() {
     return (
         <Grid container celled='internally'>
-          <Header as="h2" textAlign="center">Your Friends</Header>
+          <Header as="h2" textAlign="center" inverted>Your Friends</Header>
           <Grid.Row>
             <Grid.Column width={5}>
           <Table fixed basic='very' celled collapsing>

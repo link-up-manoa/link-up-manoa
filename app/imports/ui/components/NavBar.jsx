@@ -14,7 +14,7 @@ class NavBar extends React.Component {
       backgroundColor: '#02784D',
     };
     return (
-      <Menu style={menuStyle} attached="top" borderless inverted>
+        <Menu style={menuStyle} borderless inverted color= 'black'>
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
           <Header inverted as='h1'>Link Up Manoa</Header>
         </Menu.Item>

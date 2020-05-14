@@ -22,9 +22,9 @@ class CreateStudySession extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { username, date, place, members, topic, questions } = data;
+    const { firstName, lastName, date, location, studyType, usersAttending, subject } = data;
     const owner = Meteor.user().username;
-    Sessions.insert({ username, date, place, members, topic, questions, owner },
+    Sessions.insert({ firstName, lastName, date, location, studyType, usersAttending, subject, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');

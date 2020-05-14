@@ -39,6 +39,8 @@ class UserPage extends React.Component {
                 <h1>{this.props.user[0].firstName} {this.props.user[0].lastName}</h1>
                 <h3>Status: {this.props.user[0].status}</h3>
                 <h3>Major: {this.props.user[0].dType} - {this.props.user[0].mType}</h3>
+                <h3>Description:</h3>
+                <h4>I am an undergraduate student in Computer Science.</h4>
                 <Button icon labelPosition='left' as={NavLink} activeClassName="active"
                         exact to={`/editUser/${this.props.user[0]._id}`} key='editUser'>
                   <Icon name='edit' />
@@ -69,6 +71,43 @@ class UserPage extends React.Component {
           </Grid.Column>
         </Grid>
           <br></br>
+          <div className="ui horizontal divider">
+            <Header as="h2" textAlign="center" inverted>User Feed</Header>
+          </div>
+          <br></br>
+          <div className="ui segment">
+          <div className="ui small feed">
+            <h4 className="ui header">Friend Activity</h4>
+            <div className="event">
+              <div className="content">
+                <div className="summary">
+                  <a>Elliot Fu</a> added <a>Jenny Hess</a> as a friend
+                </div>
+              </div>
+            </div>
+            <div className="event">
+              <div className="content">
+                <div className="summary">
+                  <a>Stevie Feliciano</a> added <a>Elliot Fu</a> as a friend
+                </div>
+              </div>
+            </div>
+            <div className="event">
+              <div className="content">
+                <div className="summary">
+                  <a>Helen Troy</a> added <a>Christian Rocha</a> as a friend
+                </div>
+              </div>
+            </div>
+            <div className="event">
+              <div className="content">
+                <div className="summary">
+                  <a>Christian Rocha</a> signed up for the  site.
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
         </Container>
     );
   }
