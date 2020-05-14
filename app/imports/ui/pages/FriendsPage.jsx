@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Table, Header, Tab, Grid, Icon, Input, Button } from 'semantic-ui-react';
+import { Table, Header, Tab, Grid, Icon, Input, Button, Step } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Users } from '../../api/user/User';
@@ -27,7 +27,7 @@ class FriendsPage extends React.Component {
   render() {
     return (
         <Grid container celled='internally'>
-          <Header as="h2" textAlign="center" inverted>Your Friends</Header>
+          <Header as="h2" textAlign="center">Your Friends</Header>
           <Grid.Row>
             <Grid.Column width={5}>
           <Table fixed basic='very' celled collapsing>
@@ -99,7 +99,32 @@ class FriendsPage extends React.Component {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row>
+          <Grid.Row columns={2}>
+            <Grid.Column>
+              <Step.Group>
+                <Step>
+                  <Icon name='search'/>
+                  <Step.Content>
+                    <Step.Title>Search Friend</Step.Title>
+                    <Step.Description>Type in the username of the friend to search</Step.Desciption>
+                  </Step.Content>
+                </Step>
+                <Step>
+                  <Icon name='plus'/>
+                  <Step.Content>
+                    <Step.Title>Add Friend</Step.Title>
+                    <Step.Description>Click the Submit button to send a friend request</Step.Desciption>
+                  </Step.Content>
+                </Step>
+                <Step>
+                  <Icon name='wait'/>
+                  <Step.Content>
+                    <Step.Title>Wait</Step.Title>
+                    <Step.Description>Now you wait until the person confirms.  The user will show up under your friends tab</Step.Desciption>
+                  </Step.Content>
+                </Step>
+              </Step.Group>
+            </Grid.Column>
             <Grid.Column>
               <Input
                   action={{
