@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Header, Card, Grid, Container, Feed, Button } from 'semantic-ui-react';
+import { Loader, Header, Card, Grid, Checkbox, List, Feed, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -126,7 +126,31 @@ class Calendar extends React.Component {
           </Grid.Row>
 
         <Grid.Row>
-          <ReminderList reminders={Reminders}/>
+          <List divided relaxed>
+            <List.Item>
+              <Checkbox/>
+              <List.Content>
+                <List.Header as='p'>Finish Reading Chapter 3!</List.Header>
+                <List.Description>Due: Friday 5/14</List.Description>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+
+              <List.Content>
+                <Checkbox/>
+                <List.Header as='p' color={'white'}>
+                  Study for Johnson's WOD!</List.Header>
+                <List.Description >Due: Tuedsday 5/19</List.Description>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <Checkbox/>
+              <List.Content>
+                <List.Header as='p'>Work on Final project Website!</List.Header>
+                <List.Description>Due: Wednesday 5/13</List.Description>
+              </List.Content>
+            </List.Item>
+          </List>
         </Grid.Row>
         </Grid>
     );
