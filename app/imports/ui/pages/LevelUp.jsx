@@ -7,18 +7,13 @@ import {
   Loader,
   Card,
   Image,
-  Button,
-  Icon,
-  Grid,
   Reveal,
   Table,
   Rating,
-  Segment,
-  Divider
+  Divider,
 } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import { Users } from '../../api/user/User';
 import { Classes } from '../../api/class/Classes';
 import { History } from '../../api/history/History';
@@ -37,70 +32,46 @@ class LevelUp extends React.Component {
         <Container>
           <Header as="h2" textAlign="center" inverted>Level Up</Header>
           <Card.Group>
-            <Card centered color = 'red'>
-              <Reveal animated = 'move'>
-                <Reveal.Content visible>
-                  /** Change to a different image. */
-              <Image src={this.props.user[0].image} wrapped ui={false} />
-                </Reveal.Content>
-                <Reveal.Content hidden>
-                  <div>
-                    <h1>Grasshopper</h1>
-                    <h2>What is a grasshopper?</h2>
-                    <body>The grasshopper is just starting out on their journey as a student. In order
-                    to move on to the next level, participate in at least 2 study sessions, achieve
-                    one user rating of 5 starts, and take 100 level classes.</body>
-                  </div>
-                </Reveal.Content>
-            </Reveal>
-              <Card.Content>
-                <Card.Header>Grasshopper</Card.Header>
-              </Card.Content>
-              <Card.Content center>
-                <Grid columns='one'>
-                  <Grid.Row>
-                    <Grid.Column>
-                      <Button icon labelPosition='left' >
-                        <Icon name='arrow up' />
-                        Level Up
-                      </Button>
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </Card.Content>
-            </Card>
-          </Card.Group>
-          <Card.Group>
-            <Card centered color = 'blue'>
-              <Reveal animated = 'move'>
-                <Reveal.Content visible>
-                  <Image src={this.props.user[0].image} wrapped ui={false} />
-                </Reveal.Content>
-                <Reveal.Content hidden>
-                  <div>
-                    <h1>Sensei</h1>
-                    <h2>What is a sensei?</h2>
-                    <body>The sensei has participated in a total of at least 10 study sessions, achieved 5 positive user
-                    ratings, and has taken courses up to the 400 level.</body>
-                  </div>
-                </Reveal.Content>
-              </Reveal>
-              <Card.Content center>
-                <Card.Header>Sensei</Card.Header>
-              </Card.Content>
-              <Card.Content extra>
-                <Grid columns='one'>
-                  <Grid.Row>
-                    <Grid.Column>
-                      <Button icon labelPosition='left' >
-                        <Icon name='arrow up' />
-                        Level Up
-                      </Button>
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </Card.Content>
-            </Card>
+            {this.props.user[0].sensei ?
+                <Card centered color = 'blue'>
+                  <Reveal animated = 'move'>
+                    <Reveal.Content visible>
+                      <Image src={'https://i.imgur.com/FRDjtgA.jpg'} wrapped ui={false} />
+                    </Reveal.Content>
+                    <Reveal.Content hidden>
+                      <div>
+                        <h1>Sensei</h1>
+                        <h2>What is a sensei?</h2>
+                        <body>The sensei has participated in a total of at least 10 study sessions, achieved 5 positive user
+                        ratings, and has taken courses up to the 400 level.</body>
+                      </div>
+                    </Reveal.Content>
+                  </Reveal>
+                  <Card.Content center>
+                    <Card.Header>Sensei</Card.Header>
+                  </Card.Content>
+                </Card> :
+                <Card centered color = 'red'>
+                  <Reveal animated = 'move'>
+                    <Reveal.Content visible>
+                      /** Change to a different image. **/
+                      <Image src={'https://cdn.quotesgram.com/img/64/23/1805985858-mr-miyagi-focus-meme-generator-focus-grasshopper-5e64b5_jpg_1358036825.jpg'} wrapped ui={false} />
+                    </Reveal.Content>
+                    <Reveal.Content hidden>
+                      <div>
+                        <h1>Grasshopper</h1>
+                        <h2>What is a grasshopper?</h2>
+                        <body>The grasshopper is just starting out on their journey as a student. In order
+                        to move on to the next level, participate in at least 2 study sessions, achieve
+                        one user rating of 5 starts, and take 100 level classes.</body>
+                      </div>
+                    </Reveal.Content>
+                  </Reveal>
+                  <Card.Content>
+                    <Card.Header>Grasshopper</Card.Header>
+                  </Card.Content>
+                </Card>}
+
           </Card.Group>
 <Divider horizontal inverted>Rate Your Study Buddies</Divider>
           <Table celled padded>
