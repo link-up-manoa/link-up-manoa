@@ -3,7 +3,6 @@ import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
 import { Sessions } from '../../api/session/Session';
 import { History } from '../../api/history/History';
-import { Group } from '../../api/group/Group';
 
 /* eslint-disable no-console */
 /** Initialize the database with a default data document. */
@@ -60,21 +59,6 @@ if (History.find().count() === 0) {
   if (Meteor.settings.defaultHistory) {
     console.log('Creating History data');
     Meteor.settings.defaultHistory.map(data => addHistory(data));
-
-  }
-}
-
-/** Initialize the database with a default history document. */
-function addGroup(data) {
-  console.log(`  Adding: ${data.topic} (${data.owner})`);
-  Group.insert(data);
-}
-
-/** Initialize the collection if empty. */
-if (Group.find().count() === 0) {
-  if (Meteor.settings.defaultGroup) {
-    console.log('Creating Group Study data');
-    Meteor.settings.defaultGroup.map(data => addGroup(data));
 
   }
 }
