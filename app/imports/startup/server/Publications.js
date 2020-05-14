@@ -67,8 +67,7 @@ Meteor.publish('ClassAdmin', function publish() {
 
 Meteor.publish('Session', function publish() {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Sessions.find({ owner: username });
+    return Sessions.find();
   }
   return this.ready();
 });
@@ -80,3 +79,15 @@ Meteor.publish('Notes', function publish() {
   }
   return this.ready();
 });
+<<<<<<< Updated upstream
+=======
+
+
+Meteor.publish('Group', function publish() {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Group.find({ owner: username });
+  }
+  return this.ready();
+});
+>>>>>>> Stashed changes

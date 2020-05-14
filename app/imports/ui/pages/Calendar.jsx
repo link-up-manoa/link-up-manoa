@@ -23,10 +23,9 @@ class Calendar extends React.Component {
             <Grid.Column>
               <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
         <Card.Group>
-          {this.props.sesh.map((study) => <CalenCard
-              key={study._id}
-              study={study}
-              notes={this.props.notes.filter(note => (note.contactId === study._id))}/>)}
+          {this.props.sesh.map((study, index) => <CalenCard
+              key={index}
+              sesh={study}/>)}
         </Card.Group>
             </Grid.Column>
           </Grid.Row>

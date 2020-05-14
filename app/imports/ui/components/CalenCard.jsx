@@ -30,27 +30,13 @@ export class CalenCard extends React.Component {
     return (
         <Card>
           <Card.Content>
-            <Card.Header>{this.props.sesh.topic}</Card.Header>
+            <Card.Header>{this.props.sesh.subject}</Card.Header>
             <Card.Meta>{this.props.sesh.date}</Card.Meta>
             <Card.Description>
-              Location: {this.props.sesh.place}
+              Location: {this.props.sesh.location}
               <br/>
-              Members: {this.props.sesh.members}
+              Members: {this.props.sesh.usersAttending.map((user, index) => <p key={index}>{user}</p>)}
             </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Feed>
-              {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
-            </Feed>
-          </Card.Content>
-          <Card.Content extra>
-            <AddNote/>
-          </Card.Content>
-          <Card.Content extra>
-            <Button color='green'>Approve</Button>
-            <Button color='red' onClick={() => this.removeItem(this.props.sesh._id)}>
-              Decline
-            </Button>
           </Card.Content>
         </Card>
 
@@ -60,6 +46,6 @@ export class CalenCard extends React.Component {
 
 /** Require a document to be passed to this component. */
 CalenCard.propTypes = {
-  sesh: PropTypes.array.isRequired,
-  notes: PropTypes.array.isRequired,
+  sesh: PropTypes.object.isRequired,
 };
+
