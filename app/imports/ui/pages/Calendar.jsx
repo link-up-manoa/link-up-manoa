@@ -6,7 +6,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
 import Note from './components/Note';
-import AddNote from './component/AddNote';
+import AddNote from './components/AddNote';
+import ReminderList from './components/ReminderList';
 
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
@@ -105,17 +106,7 @@ class Calendar extends React.Component {
           </Grid.Row>
 
         <Grid.Row>
-          <Grid.Column>
-            <Header as="h2" textAlign="center" inverted>Reminders</Header>
-            <Container>
-              <Checkbox inverted="true" label='Create study guide of chapter 3'/>
-              <br/>
-              <Checkbox inverted="true" label='Bring calculator'/>
-              <br/>
-              <Checkbox inverted="true" label='Make diagram for project'/>
-              <br/>
-              </Container>
-          </Grid.Column>
+          <ReminderList reminders={Reminders}/>
         </Grid.Row>
         </Grid>
     );
