@@ -67,8 +67,7 @@ Meteor.publish('ClassAdmin', function publish() {
 
 Meteor.publish('Session', function publish() {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Sessions.find({ owner: username });
+    return Sessions.find();
   }
   return this.ready();
 });

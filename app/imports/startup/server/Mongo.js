@@ -42,9 +42,9 @@ function addSession(data) {
 
 /** Initialize the collection if empty. */
 if (Sessions.find().count() === 0) {
-  if (Meteor.settings.defaultSession) {
+  if (Meteor.settings.defaultSessions) {
     console.log('Creating Session');
-    Meteor.settings.defaultSession.map(data => addSession(data));
+    Meteor.settings.defaultSessions.map(data => addSession(data));
 
   }
 }
