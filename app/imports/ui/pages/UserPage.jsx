@@ -16,8 +16,14 @@ class UserPage extends React.Component {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
-  /** Render the page once subscriptions have been received. */
   renderPage() {
+    return (this.props.user[0] != null) ? this.renderPage1() : <Header as={'h1'} textAlign='center' inverted>
+      Unfortunately your account was deleted if
+      you feel this is a mistake please talk to an Advisor</Header>;
+  }
+
+  /** Render the page once subscriptions have been received. */
+  renderPage1() {
     return (
         <Container>
           <Header as="h2" textAlign="center" inverted>User Page</Header>
@@ -33,7 +39,8 @@ class UserPage extends React.Component {
                   Classes Taken:
                   <ul>
                     {this.props.classes.filter(obj => obj.status.includes('Taken')).map(
-                        (obj, index) => (<li key={index}>{obj.classAlpha} {obj.classNum}</li>))}
+                        (obj, index) => (<li key={index}>{obj.classAlpha} {obj.classNum}</li>),
+)}
                   </ul>
                 </Card.Description>
                 <Card.Description>
