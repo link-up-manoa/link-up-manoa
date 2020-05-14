@@ -106,21 +106,21 @@ class FriendsPage extends React.Component {
                   <Icon name='search'/>
                   <Step.Content>
                     <Step.Title>Search Friend</Step.Title>
-                    <Step.Description>Type in the username of the friend to search</Step.Desciption>
+                    <Step.Description>Type in the username of the friend to search</Step.Description>
                   </Step.Content>
                 </Step>
                 <Step>
                   <Icon name='plus'/>
                   <Step.Content>
                     <Step.Title>Add Friend</Step.Title>
-                    <Step.Description>Click the Submit button to send a friend request</Step.Desciption>
+                    <Step.Description>Click the Submit button to send a friend request</Step.Description>
                   </Step.Content>
                 </Step>
                 <Step>
                   <Icon name='wait'/>
                   <Step.Content>
                     <Step.Title>Wait</Step.Title>
-                    <Step.Description>Now you wait until the person confirms.  The user will show up under your friends tab</Step.Desciption>
+                    <Step.Description>Now you wait until the person confirms.  The user will show up under your friends tab</Step.Description>
                   </Step.Content>
                 </Step>
               </Step.Group>
