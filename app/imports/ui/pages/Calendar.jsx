@@ -1,10 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Header, Card, Grid, Checkbox, Container, Feed, Button } from 'semantic-ui-react';
+import { Loader, Header, Card, Grid, Container, Feed, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
+import { Reminders } from '../../api/stuff/Reminders';
 import Note from './components/Note';
 import AddNote from './components/AddNote';
 import ReminderList from './components/ReminderList';
