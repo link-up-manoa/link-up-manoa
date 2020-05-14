@@ -1,12 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Header, Card, Grid, Checkbox, Container } from 'semantic-ui-react';
+import { Loader, Header, Card, Grid, Checkbox, Container, Feed, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
-import { CalenCard } from '../components/CalenCard';
-
+import Note from './components/Note';
+import AddNote from './component/AddNote';
 
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
