@@ -1,15 +1,34 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, List, Header, Card, Grid, Checkbox } from 'semantic-ui-react';
+import { Loader, Header, Card, Grid, Checkbox, List, Feed, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
 import { Notes } from '../../api/note/Notes';
-import { CalenCard } from '../components/CalenCard';
-
+import Note from './components/Note';
+import AddNote from './components/AddNote';
 
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
+  
+  removeItem(docID) {
+    swal({
+      title: 'Do you really want to delete this Friend?',
+      text: 'You will not be able to recover this Friend!',
+      type: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((isConfirm) => {
+      if (isConfirm) {
+        swal('Deleted!', 'Your Friend has been deleted.',
+            'success').then(Sessions.remove(docID));
+      } else {
+        swal('Cancelled', 'User has not been deleted', 'error');
+      }
+    });
+  }
+  
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -21,16 +40,90 @@ class Calendar extends React.Component {
         <Grid container columns={1} celled='internally'>
           <Grid.Row>
             <Grid.Column>
-              <Header as="h2" textAlign="center" inverted>My Reminders</Header>
+              <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
         <Card.Group>
-          {this.props.sesh.map((study) => <CalenCard
-              key={study._id}
-              study={study}
-              notes={this.props.notes.filter(note => (note.contactId === study._id))}/>)}
+         <Card>
+          <Card.Content>
+            <Card.Header>Team Bonding</Card.Header>
+            <Card.Meta>05/14/2020 4:30 PM</Card.Meta>
+            <Card.Description>
+              Location: Hamilton Library
+              <br/>
+              Members: ICS 314 class
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Feed>
+              {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+            </Feed>
+          </Card.Content>
+          <Card.Content extra>
+            <AddNote/>
+          </Card.Content>
+          <Card.Content extra>
+            <Button color='green'>Approve</Button>
+            <Button color='red' onClick={() => this.removeItem(this.props.sesh._id)}>
+              Decline
+            </Button>
+          </Card.Content>
+        </Card>
+          
+         <Card>
+          <Card.Content>
+            <Card.Header>Calculus Functions</Card.Header>
+            <Card.Meta>06/01/2020 2:00 PM</Card.Meta>
+            <Card.Description>
+              Location: Online Zoom Call
+              <br/>
+              Members: MATH 242 class
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Feed>
+              {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+            </Feed>
+          </Card.Content>
+          <Card.Content extra>
+            <AddNote/>
+          </Card.Content>
+          <Card.Content extra>
+            <Button color='green'>Approve</Button>
+            <Button color='red' onClick={() => this.removeItem(this.props.sesh._id)}>
+              Decline
+            </Button>
+          </Card.Content>
+        </Card>
+          
+         <Card>
+          <Card.Content>
+            <Card.Header>Back-end Engineering</Card.Header>
+            <Card.Meta>06/07/2020 10:00 AM</Card.Meta>
+            <Card.Description>
+              Location: ICS Space POST 318
+              <br/>
+              Members: Project contributors
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Feed>
+              {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+            </Feed>
+          </Card.Content>
+          <Card.Content extra>
+            <AddNote/>
+          </Card.Content>
+          <Card.Content extra>
+            <Button color='green'>Approve</Button>
+            <Button color='red' onClick={() => this.removeItem(this.props.sesh._id)}>
+              Decline
+            </Button>
+          </Card.Content>
+        </Card>
         </Card.Group>
             </Grid.Column>
           </Grid.Row>
 
+        <Grid.Row>
           <List divided relaxed>
             <List.Item>
               <Checkbox/>
@@ -56,6 +149,7 @@ class Calendar extends React.Component {
               </List.Content>
             </List.Item>
           </List>
+        </Grid.Row>
         </Grid>
     );
   }
