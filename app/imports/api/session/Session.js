@@ -12,9 +12,7 @@ const SessionSchema = new SimpleSchema({
   lastName: String,
   date: Date,
   location: String,
-  studyType: String,
-  usersAttending: Array,
-  'usersAttending.$': String,
+  topic: String,
   subject: {
     type: String,
     allowedValues: [
@@ -70,6 +68,7 @@ const SessionSchema = new SimpleSchema({
       'ICS 499 Computer Project',
     ],
     defaultValue: '...',
+    owner: String,
   },
 }, { tracker: Tracker });
 

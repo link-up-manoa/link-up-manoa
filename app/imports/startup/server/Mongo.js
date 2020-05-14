@@ -59,6 +59,5 @@ if (History.find().count() === 0) {
   if (Meteor.settings.defaultHistory) {
     console.log('Creating History data');
     Meteor.settings.defaultHistory.map(data => addHistory(data));
-
   }
 }

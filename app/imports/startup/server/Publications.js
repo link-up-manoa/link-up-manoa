@@ -32,6 +32,7 @@ Meteor.publish('User', function publish() {
   }
   return this.ready();
 });
+
 Meteor.publish('UserAdmin', function publish() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Users.find();

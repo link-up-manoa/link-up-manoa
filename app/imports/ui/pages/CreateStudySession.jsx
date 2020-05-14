@@ -1,21 +1,17 @@
 import React from 'react';
-import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField, DateField } from 'uniforms-semantic';
+import { Grid, Segment, Header, Dropdown } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, SubmitField, TextField, DateField, HiddenField, SelectField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
-import SimpleSchema from 'simpl-schema';
-import { Sessions } from '../../api/session/Session';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import { Sessions, SessionSchema } from '../../api/session/Session';
+import { Users } from '../../api/user/User';
+
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const formSchema = new SimpleSchema({
-  username: String,
-  date: Date,
-  place: String,
-  members: String,
-  topic: String,
-  questions: String,
-});
+
 
 /** Renders the Page for adding a document. */
 class CreateStudySession extends React.Component {
@@ -42,16 +38,17 @@ class CreateStudySession extends React.Component {
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center" inverted>Create Study Session</Header>
-            <AutoForm ref={ref => { fRef = ref; }} schema={formSchema} onSubmit={data => this.submit(data, fRef)} >
+            <AutoForm ref={ref => { fRef = ref; }} schema={SessionSchema} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
-                <TextField name='username'/>
+                <TextField name='firstName'/>
+                <TextField name='lastName'/>
                 <DateField name='date' decimal={false}/>
-                <TextField name='place'/>
-                <TextField name='members'/>
+                <TextField name='location'/>
                 <TextField name='topic'/>
-                <TextField name='questions'/>
+                <SelectField name='subject'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
+                <HiddenField name='owner' value='fakeuser@foo.com'/>
               </Segment>
             </AutoForm>
           </Grid.Column>

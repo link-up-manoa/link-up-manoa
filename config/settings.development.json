@@ -159,43 +159,42 @@
       "sensei": false
     }
   ],
-
   "defaultSessions": [
     {
       "firstName": "Taylor",
       "lastName": "Gabatino",
       "date": "05/10/2020 4:00 PM",
       "location": "Hamilton Library",
-      "studyType": "No questions",
-      "usersAttending": ["john@foo.com"],
-      "subject": "ICS 311 Algorithms"
+      "topic": "No questions",
+      "subject": "ICS 311 Algorithms",
+      "owner": "john@foo.com"
     },
     {
       "firstName": "Taylor",
       "lastName": "Gabatino",
       "date": "05/10/2020 4:00 PM",
       "location": "Hamilton Library",
-      "studyType": "No questions",
-      "usersAttending": ["john@foo.com"],
-      "subject": "ICS 311 Algorithms"
+      "topic": "No questions",
+      "subject": "ICS 311 Algorithms",
+      "owner": "john@foo.com"
     },
     {
       "firstName": "Taylor",
       "lastName": "Gabatino",
       "date": "05/10/2020 4:00 PM",
       "location": "Hamilton Library",
-      "studyType": "No questions",
-      "usersAttending": ["john@foo.com"],
-      "subject": "ICS 311 Algorithms"
+      "topic": "No questions",
+      "subject": "ICS 311 Algorithms",
+      "owner": "john@foo.com"
     },
     {
       "firstName": "Taylor",
       "lastName": "Gabatino",
       "date": "05/10/2020 4:00 PM",
       "location": "Hamilton Library",
-      "studyType": "No questions",
-      "usersAttending": ["john@foo.com"],
-      "subject": "ICS 311 Algorithms"
+      "topic": "No questions",
+      "subject": "ICS 311 Algorithms",
+      "owner": "john@foo.com"
     }
   ],
   "defaultHistory": [
