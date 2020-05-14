@@ -27,8 +27,31 @@ class FriendsPage extends React.Component {
   render() {
     return (
         <Grid container celled='internally'>
-          <Header as="h2" textAlign="center">Your Friends</Header>
+          <Header as="h2" textAlign="center" inverted>Your Friends</Header>
           <Grid.Row>
+            <Step.Group>
+              <Step>
+                <Icon name='search'/>
+                <Step.Content>
+                  <Step.Title>Search Friend</Step.Title>
+                  <Step.Description>Type in the username of the friend to search</Step.Description>
+                </Step.Content>
+              </Step>
+              <Step>
+                <Icon name='plus'/>
+                <Step.Content>
+                  <Step.Title>Add Friend</Step.Title>
+                  <Step.Description>Click the Submit button to send a friend request</Step.Description>
+                </Step.Content>
+              </Step>
+              <Step>
+                <Icon name='wait'/>
+                <Step.Content>
+                  <Step.Title>Wait</Step.Title>
+                  <Step.Description>Now you wait until the person confirms.  The user will show up under your friends tab</Step.Description>
+                </Step.Content>
+              </Step>
+            </Step.Group>
             <Grid.Column width={5}>
           <Table fixed basic='very' celled collapsing>
             <Table.Header>
@@ -100,31 +123,6 @@ class FriendsPage extends React.Component {
           </Grid.Row>
 
           <Grid.Row columns={2}>
-            <Grid.Column>
-              <Step.Group>
-                <Step>
-                  <Icon name='search'/>
-                  <Step.Content>
-                    <Step.Title>Search Friend</Step.Title>
-                    <Step.Description>Type in the username of the friend to search</Step.Description>
-                  </Step.Content>
-                </Step>
-                <Step>
-                  <Icon name='plus'/>
-                  <Step.Content>
-                    <Step.Title>Add Friend</Step.Title>
-                    <Step.Description>Click the Submit button to send a friend request</Step.Description>
-                  </Step.Content>
-                </Step>
-                <Step>
-                  <Icon name='wait'/>
-                  <Step.Content>
-                    <Step.Title>Wait</Step.Title>
-                    <Step.Description>Now you wait until the person confirms.  The user will show up under your friends tab</Step.Description>
-                  </Step.Content>
-                </Step>
-              </Step.Group>
-            </Grid.Column>
             <Grid.Column>
               <Input
                   action={{
