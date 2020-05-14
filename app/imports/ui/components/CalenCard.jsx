@@ -4,6 +4,8 @@ import { Card, Image, Button, Item } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link, NavLink } from 'react-router-dom';
 import { Bert } from 'meteor/themeteorchef:bert';
+import AddNote from './AddNote':
+import Note from './Note';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class StudySession extends React.Component {
@@ -31,7 +33,6 @@ class StudySession extends React.Component {
         /* Eventually change src of image to this.props.profile.image in curly braces */
         <Card>
           <Card.Content>
-            <Image floated='right' size='mini' src='https://react.semantic-ui.com/images/avatar/large/steve.jpg' />
             <Card.Header>
               {this.props.session.topic}
             </Card.Header>
@@ -49,7 +50,12 @@ class StudySession extends React.Component {
             {this.renderElement()}
           </Card.Content>
           <Card.Content extra>
-            
+            <Feed>
+              {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+            </Feed>
+          </Card.Content>
+          <Card.Content extra>
+            <AddNote/>
           </Card.Content>
         </Card>
     );
@@ -60,6 +66,7 @@ class StudySession extends React.Component {
 /** Require a document to be passed to this component. */
 StudySession.propTypes = {
   session: PropTypes.object.isRequired,
+  notes: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
