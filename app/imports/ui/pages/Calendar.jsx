@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Header, Card, Grid, Checkbox, Container } from 'semantic-ui-react';
+import { Loader, List, Header, Card, Grid, Checkbox } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Sessions } from '../../api/session/Session';
@@ -21,7 +21,7 @@ class Calendar extends React.Component {
         <Grid container columns={1} celled='internally'>
           <Grid.Row>
             <Grid.Column>
-              <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
+              <Header as="h2" textAlign="center" inverted>My Reminders</Header>
         <Card.Group>
           {this.props.sesh.map((study) => <CalenCard
               key={study._id}
@@ -31,19 +31,31 @@ class Calendar extends React.Component {
             </Grid.Column>
           </Grid.Row>
 
-        <Grid.Row>
-          <Grid.Column>
-            <Header as="h2" textAlign="center" inverted>Reminders</Header>
-            <Container>
-              <Checkbox inverted="true" label='Create study guide of chapter 3'/>
-              <br/>
-              <Checkbox inverted="true" label='Bring calculator'/>
-              <br/>
-              <Checkbox inverted="true" label='Make diagram for project'/>
-              <br/>
-              </Container>
-          </Grid.Column>
-        </Grid.Row>
+          <List divided relaxed>
+            <List.Item>
+              <Checkbox/>
+              <List.Content>
+                <List.Header as='p'>Finish Reading Chapter 3!</List.Header>
+                <List.Description>Due: Friday 5/14</List.Description>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+
+              <List.Content>
+                <Checkbox/>
+                <List.Header as='p' color={'white'}>
+                  Study for Johnson's WOD!</List.Header>
+                <List.Description >Due: Tuedsday 5/19</List.Description>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <Checkbox/>
+              <List.Content>
+                <List.Header as='p'>Work on Final project Website!</List.Header>
+                <List.Description>Due: Wednesday 5/13</List.Description>
+              </List.Content>
+            </List.Item>
+          </List>
         </Grid>
     );
   }
