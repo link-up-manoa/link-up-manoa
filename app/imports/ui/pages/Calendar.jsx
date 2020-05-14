@@ -11,6 +11,7 @@ import { Reminders } from '../../api/stuff/Reminders';
 import Note from '../components/Note';
 import AddNote from '../components/AddNote';
 import ReminderList from '../components/ReminderList';
+import CalenCard from '../components/CalenCard';
 
 
 const defaultSession = [
@@ -19,8 +20,17 @@ const defaultSession = [
     owner: 'john@foo.com',
   },
 ];
+
+
 /** Renders a table containing all of the friends documents. */
-class Calendar extends React.Component {
+class Calendar extends React.Component 
+
+constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = { choices: [] };
+  }
+
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -28,26 +38,26 @@ class Calendar extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    let sessionsToView = this.props.sessions;
+    sessionsToView = _.filter(sessionsToView, (session) => {
+      if (this.sate.choices.length === 0) {
+        return true;
+      }
+      console.log(session.course, this.state.choices);
+      return _.contains(this.stat.choices, session.course);
+    });
+  
     return (
         <Grid container columns={1} celled='internally'>
           <Grid.Row>
             <Grid.Column>
               <Header as="h2" textAlign="center" inverted>Scheduled Sessions</Header>
-        <Card.Group>
-          <Card>
-            <Card.Content>
-              <Card.Header>{defaultSession.topic}</Card.Header>
-              <Card.Meta>{defaultSession.date}</Card.Meta>
-              <Card.Description>
-                Location: {defaultSession.place}
-                <br/>
-                Members: {defaultSession.members}
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Feed>
-                {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
-              </Feed>
+               <Card.Group itermsPerRow={4}>
+                 {sessionsToView.map((session, index) => <CalenCard key={index} session={session}/>)}
+                  <Card.Content extra>
+                  <Feed>
+                    {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+                 </Feed>
             </Card.Content>
             <Card.Content extra>
               <AddNote/>
