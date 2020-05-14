@@ -12,6 +12,24 @@ import ReminderList from './components/ReminderList';
 
 /** Renders a table containing all of the friends documents. */
 class Calendar extends React.Component {
+  
+  removeItem(docID) {
+    swal({
+      title: 'Do you really want to delete this Friend?',
+      text: 'You will not be able to recover this Friend!',
+      type: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((isConfirm) => {
+      if (isConfirm) {
+        swal('Deleted!', 'Your Friend has been deleted.',
+            'success').then(Sessions.remove(docID));
+      } else {
+        swal('Cancelled', 'User has not been deleted', 'error');
+      }
+    });
+  }
+  
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
